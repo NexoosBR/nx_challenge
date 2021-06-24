@@ -8,7 +8,7 @@ Este repositório foi criado para propor a solução do seguinte desafio: Challe
 ## Setup
 1) Possuir Docker instalado na sua máquina (versão utilizada neste projeto de preferência)
 2) Possuir Docker Compose instalado
-3) Baixar este repositório com o comando: git clone git@github.com:NexoosBR/nx_challenge.git
+3) Baixar este repositório com o comando: git clone git@github.com:renanmaringolo/nx_challenge.git
 4) E seguir para o Commit ~>
 
 ### Testando a aplicação
