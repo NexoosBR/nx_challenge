@@ -1,0 +1,622 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/nx_challenge/spec/controllers/api/v1/credits_controller_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          2,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/spec/rails_helper.rb": {
+        "lines": [
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/environment.rb": {
+        "lines": [
+          null,
+          1,
+          null,
+          null,
+          1
+        ]
+      },
+      "/nx_challenge/config/application.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/boot.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1
+        ]
+      },
+      "/nx_challenge/config/environments/test.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/initializers/application_controller_renderer.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/initializers/backtrace_silencers.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1
+        ]
+      },
+      "/nx_challenge/config/initializers/cors.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/initializers/mime_types.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/initializers/wrap_parameters.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/spec/factories/credits.rb": {
+        "lines": [
+          1,
+          1,
+          4,
+          4,
+          4,
+          4,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/spec/factories/loans.rb": {
+        "lines": [
+          1,
+          1,
+          3,
+          3,
+          3,
+          3,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/spec/factories/requesters.rb": {
+        "lines": [
+          1,
+          1,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/config/routes.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/controllers/api/v1/credits_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/nx_challenge/spec/controllers/api/v1/loans_controller_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          2,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/controllers/api/v1/loans_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/spec/controllers/api/v1/requesters_controller_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          2,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/controllers/api/v1/requesters_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/spec/models/credit_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/models/credit.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/nx_challenge/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/nx_challenge/spec/models/loan_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/models/loan.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/nx_challenge/spec/models/requester_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/nx_challenge/app/models/requester.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1624574644
+  }
+}

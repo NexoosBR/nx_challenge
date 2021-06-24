@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+    working_dir: /nx_challenge
+    volumes:
+      - .:/nx_challenge/
+      - bundlerGemsCached:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    command: bash -c "bundle install && bundle exec rails server -b 0.0.0.0"
+    networks:
+      - nexxnet
+  
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - datadbnex:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: nex
+      POSTGRES_DB: nex
+      POSTGRES_USER: nex
+    networks:
+      - nexxnet
+
+volumes:
+  bundlerGemsCached:
+  datadbnex:
+
+networks:
+  nexxnet:
