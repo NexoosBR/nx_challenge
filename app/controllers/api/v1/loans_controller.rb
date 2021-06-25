@@ -1,22 +1,11 @@
 module Api
   module V1
     class LoansController < ApplicationController
-      include ActionView::Helpers::NumberHelper
-
       def show
-        loan = Loan.find(params[:id])
+        loan = LoanPresenter.new(Loan.find(params[:id]))
+        loan.calculate_pmt
 
-        amount = loan.amount.to_i
-        term   = loan.term.to_i
-        tax    = loan.tax.to_f
-
-        payment = amount * ((((1 + tax)**term) * tax) / (((1 + tax)**term) - 1))
-
-        message = "O pagamento ficou em: #{term} x #{number_to_currency(payment)} - (Com juros total anual de: #{number_to_percentage((tax * 100),
-                                          precision: 2, 
-                                          strip_insignificant_zeros: true)})"
-        
-        render json: { status: 'SUCCESS', message: "#{message}", data:loan },
+        render json: { status: 'SUCCESS', message: "#{loan.calculate_pmt}", data:loan },
         status: :ok
       end
 
