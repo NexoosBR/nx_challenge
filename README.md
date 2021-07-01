@@ -8,6 +8,9 @@ Setup:
 
 ```
 rbenv install 2.7.2
+bundle install
+rails db:migrate
+rails server
 ```
 
 Para salvar as informações necessárias dos clientes será necessário enviar um Post Request para Loans:
@@ -46,4 +49,4 @@ Observações:
 A fim de se manter fiel ao desafio proposto, foi necessário pressupor que o número de meses de todos os empréstimos foram de 5.75.
 Este número foi retirado a partir da solução da equação a baixo. Dados retirados da descrição do desafio.
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\frac{1000*0,2(1+0,2)^x}{(1+0,2)^x-1}=308"/>
+<img src="app/assets/images/eq.png"/>
