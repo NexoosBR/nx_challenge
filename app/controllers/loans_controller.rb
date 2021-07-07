@@ -1,10 +1,39 @@
 class LoansController < ApplicationController
   def create
-    render json: { loan: { id: 1 } }
+
+    begin
+
+      if exist_params?([:value, :tax, :time], params)
+        response = LoansCreaterService.call(params)
+        render json: response
+      end
+    
+
+    rescue StandardError => e
+
+      render json: {error: e}, status: :bad_request 
+
+    end
+
+   
+    
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+
+    begin
+
+      if exist_params?([:id], params)
+        response = LoansShowService.call(params)
+        render json: response
+      end
+    
+
+    rescue StandardError => e
+
+      render json: {error: e}, status: :bad_request 
+
+    end
+    
   end
 end
