@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.26
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-README">README</h1>
+
+<p>Nexoos Challenge</p>
+
+<p>Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.</p>
+
+<p>Deve-se:</p>
+<ul><li>
+<p>Modelar o banco de dados parar ter os dados necessários do cálculo da PMT</p>
+</li><li>
+<p>Completar as rotas <code>POST /loans</code> e <code>GET /loans/ID</code>, alterando a API para escrever e retornar dados do banco de dados.</p>
+</li><li>
+<p>Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.</p>
+</li></ul>
+
+<p>Sobre a PMT:</p>
+
+<p><a href="https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento">fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento</a></p>
+
+<p>Cálculo da PMT:</p>
+
+<p><a href="http://ghiorzi.org/amortiza.htm">ghiorzi.org/amortiza.htm</a></p>
+
+<p>Post Request para Loans:</p>
+
+<pre class="code ruby"><code class="ruby">curl --request POST http://localhost:3000/loans -d \
+ value=1000&amp; \
+ taxa=0.2
+</code></pre>
+
+<p>Expected Response:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>loan</span><span class='label_end'>&quot;:</span> <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='label_end'>&quot;:</span> <span class='int'>1</span>
+  <span class='rbrace'>}</span>
+<span class='rbrace'>}</span>
+</code></pre>
+
+<p>Get Request para Loans:</p>
+
+<pre class="code ruby"><code class="ruby">--request GET http://localhost:3000/loans/1
+</code></pre>
+
+<p>Expected Response: <code> {   &quot;loan&quot;: {     &quot;id&quot;: 1, &quot;pmt&quot;: 308   } } </code></p>
+
+<p>Requisitos técnicos - Usar Ruby on Rails - É permitido o uso de frameworks e gems - Deve ser usado GIT para versionamento</p>
+
+<p>Pontos extras para:</p>
+<ul><li>
+<p>Documentação</p>
+</li><li>
+<p>Testes unitários e/ou de integração com Rspec</p>
+</li></ul>
+
+<p>Envio:</p>
+
+<p>Envie o seu código pronto através de um Pull Request para esse repositório</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Wed Jul  7 17:06:39 2021 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.26 (ruby-2.7.2).
+</div>
+
+    </div>
+  </body>
+</html>
