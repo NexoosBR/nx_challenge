@@ -13,7 +13,7 @@ class LoansCreaterService < ApplicationService
 
         raise StandardError, "Invalid Parameters" unless params_valid
 
-        pmt = LoanMath.pmt(@amount.to_f, @tax.to_f, @time.to_f)
+        pmt = LoanMath.pmt(@amount.to_f, @tax.to_f, @time_in_months.to_i)
         loan = Loan.new(amount:@amount, tax:@tax, time:@time_in_months, pmt:pmt)
         loan.save!
 

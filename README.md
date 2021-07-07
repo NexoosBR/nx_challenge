@@ -1,65 +1,100 @@
-# README
+# Rails: UBS API
 
-Nexoos Challenge
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+This project is a simple backend service that receive a latitude and longitude and return all Ubs near parameters passed.
 
-Deve-se:
+### Some libraries used
 
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
+UBS API use some opensource libraries like:
 
-Sobre a PMT:
+* [postgresql] - Robust database for persist data
+* [rack-cors] - Middleware to CORS support
+* [factorybot] - Library to build objects to use in rspec
+* [rspec] - Awesome test framework
+* [faker] - Library to generate fake data used in factorybot
+* [geocoder] - Complete geocode solution
+* [yard] - To generate the documentation
 
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
+### Install
 
-Cálculo da PMT:
+To use UBS API, first you need have installed postgreSql, The postgreSql can be easily installed in ubuntu using the commmands below:
 
-http://ghiorzi.org/amortiza.htm
+```sh
+$ sudo apt update
+$ sudo apt install postgresql postgresql-contrib
+$ sudo -u postgres createuser --interactive
+```
 
+UBS API also use ruby 3.0.1 make sure you have it installed. We need the seed because we need populate our database with all ubs, check the commands below:
 
-Post Request para Loans:
+```sh
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed
+```
+
+We are almost there! Now start the server.
+
+```sh
+$ rails s
+```
+
+### Endpoints
+
+There is a lot of tools to connect with the services, but I recommend [Insomnia](https://insomnia.rest/) it's a great Rest client and you will love it. 
+
+| Name | Endpoint |
+| ------ | ------ |
+| cep  |[GET]  localhost:3000/api/v1/find_ubs
+
+Now you can start using the services, look the example
+
+```sh
+[GET] localhost:3000/api/v1/find_ubs/?query=-8.224304,-34.9684098&page=1&per_page=1
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
-```
 
-Expected Response:
+Return example
 
 ```
 {
-  "loan": {
-    "id": 1
-  }
+  "current_page": 1,
+  "per_page": 1,
+  "total_entries": 22,
+  "entries": [
+    {
+      "id": 10,
+      "name": "USF SANTA ROSA",
+      "address": "RUA SANTA ROSA",
+      "district": "PONTEZINHA",
+      "city": "Cabo de Santo Agostinho",
+      "state": "PE",
+      "geocode": {
+        "lat": -8.224304,
+        "long": -34.9684098
+      },
+      "ibge": 260290
+    }
+  ]
 }
 ```
 
-Get Request para Loans:
+### Tests
 
-```curl --request GET http://localhost:3000/loans/1```
+UBS API was built using TDD(Test Driven Development), all development was guided by the tests, walltests that can be easily executed running with rspec.
 
-Expected Response:
-```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
+Executar todos os testes:
+```sh
+$ bundle exec rspec
 ```
 
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
+### Project Structure
 
-Pontos extras para:
+The project was divided as follows:
 
-- Documentação
-- Testes unitários e/ou de integração com Rspec
+* [app/ap1/v1] - Here we have all endpoints of this application
+* [app/services] - Service layer used by endpoints
+* [app/spec] - You can find all tests here, a special attention to [app/spec/requests/ubs_api_spec.rb] where you can find the main tests
 
-Envio:
-
-Envie o seu código pronto através de um Pull Request para esse repositório

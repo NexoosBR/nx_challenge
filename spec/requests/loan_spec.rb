@@ -6,11 +6,11 @@ RSpec.describe 'Loan Api', type: :request do
     
     context 'when send data to save loan' do
         describe 'POST /loans' do
-            before {post "/loans", params: {value:200, tax:2.5, time:12}}
+            before {post "/loans", params: {value:999, tax:2.8, time:12}}
 
-            it 'shound return saved loan id' do
+            it 'shound return saved loan id' do                
                 expect(response).to have_http_status(200)
-                expect(response.body).to match('id')                
+                expect(response.body).to match('id')                       
             end            
         end
     end
