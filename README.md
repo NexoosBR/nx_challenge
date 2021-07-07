@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-This project is a simple backend service that create a loan and calcule the pmt, you can also retrieve the information passing the loan id.
+This project is a simple backend service that create a loan with calculed pmt, you can also retrieve the information passing the loan id.
 
 ### Some libraries used
 
@@ -43,7 +43,12 @@ There is a lot of tools to connect with the services, but I recommend [Insomnia]
 Now you can start using the services, look the example
 
 ```
-[POST] localhost:3000/loans/?value=999&tax=2.8&time=12
+[POST] localhost:3000/loans
+{
+  "value":"999",
+  "tax":"2.8",
+  "time":"12"
+}
 
 ```
 Return example
