@@ -1,65 +1,72 @@
-# README
 
-Nexoos Challenge
+# Desafio
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+O objetivo deste repositório é gerir empréstimos, salvando informações necessárias do cliente para realizar o cálculo do PMT (valor da parcela), além de possibilitar a leitura desses dados pelo cliente.
 
-Deve-se:
 
+## Tarefas
 - Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
 - Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
-
-Sobre a PMT:
-
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
-
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
+  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dado
 
 
-Post Request para Loans:
+## Setup
 
+- Ruby 2.7.2
+- Rails 6.1.3.2
+- SQlite3
+
+
+## Configurando Ambiente
+
+1. Clone o repositório ou faça download dos arquivos
+
+2. Instale as Gems e dependências
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
-```
-
-Expected Response:
-
-```
-{
-  "loan": {
-    "id": 1
-  }
-}
+  bundle install
 ```
 
-Get Request para Loans:
-
-```curl --request GET http://localhost:3000/loans/1```
-
-Expected Response:
+3. Crie o banco de dados
 ```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
+  rails db:create
+```
+4. Execute as Migrations
+```
+  rails db:migrate
 ```
 
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
+5. Rode a aplicação
+```
+  rails server
+```
 
-Pontos extras para:
+6. Acesse a aplicação
+```http
+  localhost:3000
+```
 
-- Documentação
-- Testes unitários e/ou de integração com Rspec
+## API Requests
 
-Envio:
+#### Post Request para Loans
 
-Envie o seu código pronto através de um Pull Request para esse repositório
+```http
+  POST localhost:3000/loans
+```
+
+- Envie no corpo da request um json contendo os valores
+
+| Parâmetro | Tipo     | Descrição                |
+| :-------- | :------- | :------------------------- |
+| `finance` | `float`  | **Obrigatório**. Valor do financiamento |
+|   `tax`   | `float`  | **Obrigatório**. Taxa do financiamento |
+| `months`  | `integer`| **Obrigatório**. Nº de Meses do financiamento |
+
+#### Get Request para Loans
+
+```http
+  GET localhost:3000/loans/id
+```
+
+| Parâmetro | Tipo     | Descrição                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | Identificador do loan |
