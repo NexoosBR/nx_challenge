@@ -1,4 +1,5 @@
 class LoansController < ApplicationController
+  before_action :set_loan, only: :show
 
   def create
     @parcel = ParcelCalculatorService.call(loan_params)
@@ -22,11 +23,14 @@ class LoansController < ApplicationController
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    render json: { loan: { id: @loan.id, pmt: @loan.parcel } } if @loan.present?
   end
 
   private
+
+  def set_loan
+    @loan = Loan.find(params[:id])
+  end
 
   def loan_params
     params.require(:loan).permit(:finance, :tax, :months)
