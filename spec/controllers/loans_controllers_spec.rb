@@ -1,7 +1,7 @@
-require "rails_helper" 
+require 'rails_helper'
 
 RSpec.describe LoansController do
-  describe "GET show" do
+  describe 'GET show' do
     it do
       get :show, params: { id: 1 }
       param = JSON.parse(response.body).with_indifferent_access
@@ -9,7 +9,7 @@ RSpec.describe LoansController do
     end
   end
 
-  describe "POST show" do
+  describe 'POST show' do
     it do
       post :create
       param = JSON.parse(response.body).with_indifferent_access

@@ -1,0 +1,24 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+AllCops:
+  TargetRubyVersion: 2.7.2
+  Exclude:
+    - '**/db/**/*'
+    - '**/Gemfile'
+    - '**/Gemfile.lock'
+    - '**/Guardfile'
+    - '**/Rakefile'
+    - '**/rails'
+    - '**/config/**/*'
+    - '**/spec/*'
+    - '**/test/**/*'
+    - '**/lib/**/*'
+    - '**/bin/*'
+    - '**/migrate/**/*'
+    - '**/vendor/**/*'
+    - '**/vendor/**/*'
+    - '*'
+
+Style/StringLiterals:
+  Enabled: true
