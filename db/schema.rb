@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_163535) do
+ActiveRecord::Schema.define(version: 2021_07_09_180744) do
 
   create_table "customers", charset: "utf8", force: :cascade do |t|
     t.string "document", limit: 18, null: false
@@ -20,4 +20,16 @@ ActiveRecord::Schema.define(version: 2021_07_09_163535) do
     t.index ["document"], name: "index_customers_on_document", unique: true
   end
 
+  create_table "loans", charset: "utf8", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.decimal "amount", precision: 14, scale: 2, null: false
+    t.decimal "monthly_rate", precision: 9, scale: 4, null: false
+    t.integer "months", null: false
+    t.decimal "installment", precision: 14, scale: 2, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_loans_on_customer_id"
+  end
+
+  add_foreign_key "loans", "customers"
 end

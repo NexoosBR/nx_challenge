@@ -24,8 +24,11 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer.destroy
-    render status: :no_content
+    if @customer.destroy
+      render status: :no_content
+    else
+      render json: { errors: @customer.errors }, status: :unprocessable_entity
+    end
   end
 
   private

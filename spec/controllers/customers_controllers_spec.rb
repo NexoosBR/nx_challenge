@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CustomersController, type: :controller do
-  let!(:customer) { create(:customer) }
-  let!(:customer_params) { build(:customer).attributes }
+  let(:customer) { create(:customer) }
+  let(:customer_params) { build(:customer).attributes }
 
   it 'show customer' do
     get :show, params: { id: customer.id }
@@ -39,5 +39,11 @@ RSpec.describe CustomersController, type: :controller do
   it 'destroy customer' do
     delete :destroy, params: { id: customer.id }
     expect(response).to have_http_status(:no_content)
+  end
+
+  it 'do not destroy customer with loans' do
+    customer_with_loan = create(:customer, :with_loan)
+    delete :destroy, params: { id: customer_with_loan.id }
+    expect(response).to have_http_status(:unprocessable_entity)
   end
 end
