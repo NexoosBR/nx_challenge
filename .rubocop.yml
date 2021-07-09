@@ -22,3 +22,6 @@ AllCops:
 
 Style/StringLiterals:
   Enabled: true
+
+Metrics/LineLength:
+  Enabled: false
