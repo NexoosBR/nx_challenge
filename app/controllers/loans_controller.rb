@@ -5,6 +5,7 @@ class LoansController < ApplicationController
 
   def show
     pmt =  3_700 / 12
+
     render json: { loan: { id: 1, pmt: pmt } }
   end
 end

@@ -1,0 +1,2 @@
+class Installment < ApplicationRecord
+end
