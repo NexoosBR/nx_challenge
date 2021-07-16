@@ -5,8 +5,8 @@ RSpec.describe Client, type: :model do
     client = Client.create(
       first_name: 'Rafael', 
       last_name: 'Carrilho', 
-      email: 'rafael@email.com', 
-      document: '176.699.507-14',
+      email: 'rafael2@email.com', 
+      document: '111.111.112-11',
       birthdate: '2000-02-16'
     )
     expect(client).to be_valid
@@ -15,8 +15,8 @@ RSpec.describe Client, type: :model do
     client = Client.create(
       first_name: 'Rafael',
       last_name: 'Carrilho', 
-      email: 'rafael@email.com', 
-      document: '176.699.507-14',
+      email: 'rafael3@email.com', 
+      document: '111.111.113-11',
       birthdate: '2000-02-16'
     )
     expect(client.full_name).to eq('Rafael Carrilho')
@@ -28,8 +28,8 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: nil, 
           last_name: 'Carrilho', 
-          email: 'rafael@email.com', 
-          document: '176.699.507-14',
+          email: 'rafael4@email.com', 
+          document: '111.111.114-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -41,8 +41,8 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: nil, 
-          email: 'rafael@email.com', 
-          document: '176.699.507-14',
+          email: 'rafael5@email.com', 
+          document: '111.111.115-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -55,7 +55,7 @@ RSpec.describe Client, type: :model do
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
           email: nil, 
-          document: '176.699.507-14',
+          document: '111.111.116-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -66,7 +66,7 @@ RSpec.describe Client, type: :model do
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
           email: 'eunaosouumemail', 
-          document: '176.699.507-14',
+          document: '111.111.117-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -76,19 +76,61 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
-          email: 'rafael@email.com', 
-          document: '176.699.507-14',
+          email: 'rafael8@email.com', 
+          document: '111.111.118-11',
           birthdate: '2000-02-16'
         )
         client2 = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
-          email: 'rafael@email.com', 
-          document: '176.699.507-14',
+          email: 'rafael8@email.com', 
+          document: '111.111.119-11',
           birthdate: '2000-02-16'
         )
         client2.valid?
         expect(client2.errors[:email]).to include('has already been taken')
+      end
+    end
+    describe 'document' do
+      it 'presence must to be true' do
+        client = Client.create(
+          first_name: 'Rafael', 
+          last_name: 'Carrilho', 
+          email: 'rafael10@email.com', 
+          document: nil,
+          birthdate: '2000-02-16'
+        )
+        client.valid?
+        expect(client.errors[:document]).to include("can't be blank")
+      end
+      it 'must to be on document format' do
+        client = Client.create(
+          first_name: 'Rafael', 
+          last_name: 'Carrilho', 
+          email: 'rafael11@email.com', 
+          document: '11111111111',
+          birthdate: '2000-02-16'
+        )
+        client.valid?
+        expect(client.errors[:document]).to include("wrong format")
+      end
+      it 'must to be unique' do
+        client = Client.create(
+          first_name: 'Rafael',
+          last_name: 'Carrilho', 
+          email: 'rafael12@email.com', 
+          document: '111.111.120-11',
+          birthdate: '2000-02-16'
+        )
+        client2 = Client.create(
+          first_name: 'Rafael', 
+          last_name: 'Carrilho', 
+          email: 'rafael13@email.com', 
+          document: '111.111.120-11',
+          birthdate: '2000-02-16'
+        )
+        client2.valid?
+        expect(client2.errors[:document]).to include('has already been taken')
       end
     end
     describe 'age' do
@@ -96,8 +138,8 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
-          email: 'rafael@email.com', 
-          document: '176.699.507-14',
+          email: 'rafael14@email.com', 
+          document: '111.111.121-11',
           birthdate: '2008-02-16'
         )
         client.valid?
