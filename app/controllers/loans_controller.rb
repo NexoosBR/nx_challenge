@@ -1,10 +1,27 @@
 class LoansController < ApplicationController
+  before_action :set_loan, only: [:show]
+
   def create
-    render json: { loan: { id: 1 } }
+    loan = Loan.new create_params
+
+    if loan.save
+      render json: loan
+    else
+      render json: { errors: loan.errors }
+    end
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    render json: { loan: @loan }
+  end
+
+  private
+
+  def set_loan
+    @loan ||= Loan.find params[:id]
+  end
+
+  def create_params
+    params.require(:loan).permit(:value, :installments, :rate)
   end
 end
