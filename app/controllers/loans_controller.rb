@@ -1,27 +1,29 @@
+# frozen_string_literal: true
+
 class LoansController < ApplicationController
   before_action :set_loan, only: [:show]
 
   def create
-    loan = Loan.new create_params
+    loan = Loan.new loan_params
 
     if loan.save
-      render json: loan
+      render json: loan, status: :created
     else
-      render json: { errors: loan.errors }
+      render json: loan.errors, status: :unprocessable_entity
     end
   end
 
   def show
-    render json: { loan: @loan }
+    render json: @loan
   end
 
   private
 
   def set_loan
-    @loan ||= Loan.find params[:id]
+    @loan = Loan.find params[:id]
   end
 
-  def create_params
+  def loan_params
     params.require(:loan).permit(:value, :installments, :rate)
   end
 end
