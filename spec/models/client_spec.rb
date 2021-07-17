@@ -50,7 +50,7 @@ RSpec.describe Client, type: :model do
       end
     end
     describe 'email' do
-      it 'presence must to be true' do
+      it 'when inst present' do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
@@ -61,7 +61,7 @@ RSpec.describe Client, type: :model do
         client.valid?
         expect(client.errors[:email]).to include("can't be blank")
       end
-      it 'must to be on email format' do
+      it 'when isnt in email format' do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
@@ -72,7 +72,7 @@ RSpec.describe Client, type: :model do
         client.valid?
         expect(client.errors[:email]).to include("wrong format")
       end
-      it 'must to be unique' do
+      it 'when isnt unique' do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
@@ -83,7 +83,7 @@ RSpec.describe Client, type: :model do
         client2 = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
-          email: 'rafael8@email.com', 
+          email: 'rafael@email.com', 
           document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
@@ -92,7 +92,7 @@ RSpec.describe Client, type: :model do
       end
     end
     describe 'document' do
-      it 'presence must to be true' do
+      it 'when isnt present' do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
@@ -103,7 +103,7 @@ RSpec.describe Client, type: :model do
         client.valid?
         expect(client.errors[:document]).to include("can't be blank")
       end
-      it 'must to be on document format' do
+      it 'when isnt on document format' do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
@@ -114,7 +114,7 @@ RSpec.describe Client, type: :model do
         client.valid?
         expect(client.errors[:document]).to include("wrong format")
       end
-      it 'must to be unique' do
+      it 'when isnt unique' do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
@@ -134,7 +134,7 @@ RSpec.describe Client, type: :model do
       end
     end
     describe 'age' do
-      it 'must to be breater than 18' do
+      it 'when are lower than 18' do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
