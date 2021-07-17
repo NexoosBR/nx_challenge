@@ -5,8 +5,8 @@ RSpec.describe Client, type: :model do
     client = Client.create(
       first_name: 'Rafael', 
       last_name: 'Carrilho', 
-      email: 'rafael2@email.com', 
-      document: '111.111.112-11',
+      email: 'rafael@email.com', 
+      document: '111.111.111-11',
       birthdate: '2000-02-16'
     )
     expect(client).to be_valid
@@ -15,8 +15,8 @@ RSpec.describe Client, type: :model do
     client = Client.create(
       first_name: 'Rafael',
       last_name: 'Carrilho', 
-      email: 'rafael3@email.com', 
-      document: '111.111.113-11',
+      email: 'rafael@email.com', 
+      document: '111.111.111-11',
       birthdate: '2000-02-16'
     )
     expect(client.full_name).to eq('Rafael Carrilho')
@@ -28,8 +28,8 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: nil, 
           last_name: 'Carrilho', 
-          email: 'rafael4@email.com', 
-          document: '111.111.114-11',
+          email: 'rafael@email.com', 
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -42,7 +42,7 @@ RSpec.describe Client, type: :model do
           first_name: 'Rafael', 
           last_name: nil, 
           email: 'rafael5@email.com', 
-          document: '111.111.115-11',
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -55,7 +55,7 @@ RSpec.describe Client, type: :model do
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
           email: nil, 
-          document: '111.111.116-11',
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -66,7 +66,7 @@ RSpec.describe Client, type: :model do
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
           email: 'eunaosouumemail', 
-          document: '111.111.117-11',
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client.valid?
@@ -76,15 +76,15 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
-          email: 'rafael8@email.com', 
-          document: '111.111.118-11',
+          email: 'rafael@email.com', 
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client2 = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
           email: 'rafael8@email.com', 
-          document: '111.111.119-11',
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client2.valid?
@@ -96,7 +96,7 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
-          email: 'rafael10@email.com', 
+          email: 'rafael@email.com', 
           document: nil,
           birthdate: '2000-02-16'
         )
@@ -107,7 +107,7 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
-          email: 'rafael11@email.com', 
+          email: 'rafael@email.com', 
           document: '11111111111',
           birthdate: '2000-02-16'
         )
@@ -118,15 +118,15 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
-          email: 'rafael12@email.com', 
-          document: '111.111.120-11',
+          email: 'rafael@email.com', 
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client2 = Client.create(
           first_name: 'Rafael', 
           last_name: 'Carrilho', 
-          email: 'rafael13@email.com', 
-          document: '111.111.120-11',
+          email: 'rafael@email.com', 
+          document: '111.111.111-11',
           birthdate: '2000-02-16'
         )
         client2.valid?
@@ -138,8 +138,8 @@ RSpec.describe Client, type: :model do
         client = Client.create(
           first_name: 'Rafael',
           last_name: 'Carrilho', 
-          email: 'rafael14@email.com', 
-          document: '111.111.121-11',
+          email: 'rafael@email.com', 
+          document: '111.111.111-11',
           birthdate: '2008-02-16'
         )
         client.valid?
