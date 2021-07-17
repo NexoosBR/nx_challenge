@@ -8,13 +8,13 @@ class Loan < ApplicationRecord
   end
 
   def as_json(options = {})
-    {
+    {loan: {
       id: self.id,
       pmt: self.pmt, 
       amount: self.amount, 
       rate: self.rate,
       client: self.client 
-    }
+    }}
   end
 
 end

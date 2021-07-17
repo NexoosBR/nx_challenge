@@ -15,7 +15,7 @@ RSpec.describe LoansController do
     
       get :show, params: { id: 1 }
       param = JSON.parse(response.body).with_indifferent_access
-      expect(param[:id]).to eq(1)
+      expect(param[:loan][:id]).to eq(1)
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe LoansController do
       }
       param = JSON.parse(response.body).with_indifferent_access
       expect(response).to have_http_status(:success)
-      expect(param[:id]).to eq(2)
+      expect(param[:loan][:id]).to eq(2)
     end
   end
 end
