@@ -1,26 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Loan, type: :model do
-  # before(:all) do
-  #   @client = Client.create(
-  #     first_name: 'Rafael',
-  #     last_name: 'Carrilho',
-  #     email: 'rafael50@email.com',
-  #     document: '111.111.150-11',
-  #     birthdate: '2000-02-24'
-  #   )
-  # end
-  
-  it 'is valid when all params is present' do
-    client = Client.create(
+  before(:each) do
+    @client = Client.create(
       first_name: 'Rafael',
       last_name: 'Carrilho',
       email: 'rafael50@email.com',
-      document: '111.111.150-11',
+      document: '111.111.111-11',
       birthdate: '2000-02-24'
     )
+  end
+  
+  it 'is valid when all params is present' do
+   
     loan = Loan.create(
-      client: client,
+      client: @client,
       amount: 10000.0,
       rate: 0.2,
       months: 10
@@ -31,15 +25,8 @@ RSpec.describe Loan, type: :model do
   context 'model validations test' do
     describe 'amount' do
       it 'presence must to be true' do
-        client = Client.create(
-          first_name: 'Rafael',
-          last_name: 'Carrilho',
-          email: 'rafael@email.com',
-          document: '111.111.111-11',
-          birthdate: '2000-02-24'
-        )
         loan = Loan.create(
-          client: client,
+          client: @client,
           amount: nil,
           rate: 0.2,
           months: 10
@@ -50,15 +37,8 @@ RSpec.describe Loan, type: :model do
     end
     describe 'rate' do
       it 'presence must to be true' do
-        client = Client.create(
-          first_name: 'Rafael',
-          last_name: 'Carrilho',
-          email: 'rafael@email.com',
-          document: '111.111.111-11',
-          birthdate: '2000-02-24'
-        )
         loan = Loan.create(
-          client: client,
+          client: @client,
           amount: 10000.0,
           rate: nil,
           months: 10
@@ -81,15 +61,8 @@ RSpec.describe Loan, type: :model do
     end
     describe 'rate' do
       it 'presence must to be true' do
-        client = Client.create(
-          first_name: 'Rafael',
-          last_name: 'Carrilho',
-          email: 'rafael@email.com',
-          document: '111.111.111-11',
-          birthdate: '2000-02-24'
-        )
         loan = Loan.create(
-          client: client,
+          client: @client,
           amount: 10000.0,
           rate: nil,
           months: 10
