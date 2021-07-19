@@ -1,3 +1,8 @@
+# API DOCUMENTATION
+
+- POSTMAN
+  https://documenter.getpostman.com/view/11703268/TzmChYvj
+
 # README
 
 Nexoos Challenge
@@ -17,7 +22,6 @@ https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagament
 Cálculo da PMT:
 
 http://ghiorzi.org/amortiza.htm
-
 
 Post Request para Loans:
 
@@ -39,9 +43,10 @@ Expected Response:
 
 Get Request para Loans:
 
-```curl --request GET http://localhost:3000/loans/1```
+`curl --request GET http://localhost:3000/loans/1`
 
 Expected Response:
+
 ```
 {
   "loan": {
@@ -51,6 +56,7 @@ Expected Response:
 ```
 
 Requisitos técnicos
+
 - Usar Ruby on Rails
 - É permitido o uso de frameworks e gems
 - Deve ser usado GIT para versionamento
