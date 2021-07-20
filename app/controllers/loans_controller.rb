@@ -3,16 +3,21 @@ class LoansController < ApplicationController
     loan = Loan.new(loan_params)
 
     if loan.save
-      render json: loan, serializer: LoanSerializer, status: :created
+      pmt = loan.total_value / loan.total_installment
+
+      loan.total_installment.times do |installment|
+        Installment.create(parcel_price: pmt, parcel_number: installment + 1, loan_id: loan.id)
+      end
+      render json: loan, serializer: Loan::Create::LoanSerializer, status: :created
     else
       render json: { errors: loan.errors }, status: :unprocessable_entity
     end
   end
 
   def show
-    pmt =  3000 / 12
+    loan = Loan.find(params[:id])
 
-    render json: { loan: { id: 1, pmt: pmt } }
+    render json: loan, serializer: Loan::Show::LoanSerializer, status: :ok
   end
 
   def loan_params
