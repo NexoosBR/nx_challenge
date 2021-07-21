@@ -1,5 +1,7 @@
-#Create a Customer
-  POST "/customers"
+### Criar um cliente
+
+  endpoint: "/customers"
+  verbo HTTP: POST
 
   request body:
   {
@@ -13,9 +15,13 @@
   }
 
   status code: 201 (created)
-#Create a Loan
 
-  POST "/loans"
+================================================================
+
+### Criar um empréstimo
+
+  endpoint: "/loans"
+  verbo HTTP: POST
 
   request body:
     {
@@ -47,9 +53,12 @@
 
     status code: 201 (created)
 
-# Show a Loan
+================================================================
 
-  GET "/loans/:id"
+### Mostrar um empréstimo
+
+  endpoint: "/loans/:id"
+  verbo HTTP: GET
 
   response body:
 

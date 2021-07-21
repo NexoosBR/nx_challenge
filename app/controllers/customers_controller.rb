@@ -3,7 +3,9 @@ class CustomersController < ApplicationController
     customer = Customer.new(customer_params)
 
     if customer.save
-      render json: customer, serializer: Customer::Create::CustomerSerializer, status: :created
+      render json: customer,
+             serializer: Customer::Create::CustomerSerializer,
+             status: :created
     else
       render json: { errors: customer.errors }, status: :unprocessable_entity
     end
