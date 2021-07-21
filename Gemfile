@@ -5,6 +5,7 @@ ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
+gem 'active_model_serializers', '~> 0.10.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
@@ -29,6 +30,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
+  gem 'pry', '~> 0.13.1'
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'factory_bot_rails', '~> 6.2.0'
 end
 
 group :development do
