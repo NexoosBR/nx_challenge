@@ -40,5 +40,4 @@ RSpec.describe Client, type: :model do
     client2 = Client.create(name: "Lucas Dalbonio", email: "example@email.com", phone: "21999999999", cpf: "712.132.390-79")  
     expect(client2).to_not be_valid
   end
-  pending "add some examples to (or delete) #{__FILE__}"
 end
