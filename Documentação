@@ -1,84 +1,92 @@
-### Criar um cliente
+COMANDOS:
+  Para instalar as gems presentes neste projeto, digite no terminal o seguinte comando: bundle install
 
-  endpoint: "/customers"
-  verbo HTTP: POST
+  Para rodar todos os testes presentes na pasta "spec", digite no terminal o seguinte comando: rspec spec/
 
-  request body:
-  {
-    "name": "Jane Doe"
-  }
+  Para subir o servidor, digite no terminal o seguinte comando: rails s
 
-  response body:
-  {
-    "id": 6,
-    "name": "Jane Doe"
-  }
+ENDPOINTS:
+  ### Criar um cliente
 
-  status code: 201 (created)
+    endpoint: "/customers"
+    verbo HTTP: POST
 
-================================================================
-
-### Criar um empréstimo
-
-  endpoint: "/loans"
-  verbo HTTP: POST
-
-  request body:
+    request body:
     {
-      "total_value",
-      "total_installment",
-      "customer_id"
+      "name": "Jane Doe"
     }
 
-  response body:
-
+    response body:
     {
-      "id": 2,
-      "total_value": "3000.0",
-      "total_installment": 2,
-      "customer_name": "John Doe",
-      "installments": [
-        {
-          "id": 5,
-          "parcel_price": "1500.0",
-          "parcel_number": 1
-        },
-        {
-          "id": 6,
-          "parcel_price": "1500.0",
-          "parcel_number": 2
-        }
-      ]
+      "id": 6,
+      "name": "Jane Doe"
     }
 
     status code: 201 (created)
 
-================================================================
+=================================================================
 
-### Mostrar um empréstimo
+  ### Criar um empréstimo
 
-  endpoint: "/loans/:id"
-  verbo HTTP: GET
+    endpoint: "/loans"
+    verbo HTTP: POST
 
-  response body:
+    request body:
+      {
+        "total_value",
+        "total_installment",
+        "customer_id"
+      }
 
-    {
-      "id": 2,
-      "total_value": "3000.0",
-      "total_installment": 2,
-      "customer_name": "John Doe",
-      "installments": [
-        {
-          "id": 5,
-          "parcel_price": "1500.0",
-          "parcel_number": 1
-        },
-        {
-          "id": 6,
-          "parcel_price": "1500.0",
-          "parcel_number": 2
-        }
-      ]
-    }
+    response body:
 
-    status code: 200 (ok)
+      {
+        "id": 2,
+        "total_value": "3000.0",
+        "total_installment": 2,
+        "customer_name": "John Doe",
+        "installments": [
+          {
+            "id": 5,
+            "parcel_price": "1500.0",
+            "parcel_number": 1
+          },
+          {
+            "id": 6,
+            "parcel_price": "1500.0",
+            "parcel_number": 2
+          }
+        ]
+      }
+
+      status code: 201 (created)
+
+=================================================================
+
+  ### Mostrar um empréstimo
+
+    endpoint: "/loans/:id"
+    verbo HTTP: GET
+
+    response body:
+
+      {
+        "id": 2,
+        "total_value": "3000.0",
+        "total_installment": 2,
+        "customer_name": "John Doe",
+        "installments": [
+          {
+            "id": 5,
+            "parcel_price": "1500.0",
+            "parcel_number": 1
+          },
+          {
+            "id": 6,
+            "parcel_price": "1500.0",
+            "parcel_number": 2
+          }
+        ]
+      }
+
+      status code: 200 (ok)
