@@ -6,7 +6,7 @@ module RequestAPI
     return {} 
   end
 
-  def auth_header(merge_with: {})
+  def header(merge_with: {})
     header = { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }
     header.merge merge_with
   end
