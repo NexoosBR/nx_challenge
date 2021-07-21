@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -40,8 +41,10 @@ group :development do
 end
 
 group :test do
+  # Database Cleaner is a set of gems containing strategies for cleaning your database in Ruby.
   gem 'database_cleaner-active_record'
-  gem 'shoulda-matchers', '~> 4.0'
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality that, if written by hand, would be much longer, more complex, and error-prone.
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
