@@ -7,6 +7,8 @@ COMANDOS:
 
   Para subir o servidor, digite no terminal o seguinte comando: rails s
 
+  Para executar as migrations, digite no terminal o seguinte comando: rails db:migrate
+
 ENDPOINTS:
   ### Criar um cliente
 
