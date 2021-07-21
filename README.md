@@ -18,13 +18,31 @@ Cálculo da PMT:
 
 http://ghiorzi.org/amortiza.htm
 
+Post Request para Clients:
+
+```
+curl --request POST http://localhost:3000/clients -d '{"client":{"name": "Lucas Dalbonio", "email": "example@email.com", "phone": "21999999999", "cpf": "430.720.540-53"}}' -H "Content-Type: application/json"
+```
+
+Expected Response:
+
+```
+{"client":{
+  "id":1,
+  "name":"Lucas Dalbonio",
+  "email":"example@email.com",
+  "phone":"21999999999",
+  "cpf":"430.720.540-53",
+  "created_at":"2021-07-20T19:06:34.971Z",
+  "updated_at":"2021-07-20T19:06:34.971Z"}
+  }
+```
+
 
 Post Request para Loans:
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+curl --request POST http://localhost:3000/loans -d '{"loan":{"value": "1000", "rate": "0.02", "months": "12", "client_id": "1"}}' -H "Content-Type: application/json"
 ```
 
 Expected Response:
@@ -45,7 +63,7 @@ Expected Response:
 ```
 {
   "loan": {
-    "id": 1, "pmt": 308
+    "id": 1, "pmt": 94.56
   }
 }
 ```

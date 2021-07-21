@@ -1,10 +1,26 @@
 class LoansController < ApplicationController
-  def create
-    render json: { loan: { id: 1 } }
-  end
+    def create
+        loan = Loan.new(loan_params)
+        if loan.valid?
+            loan.save
+            render json: {loan: loan.id}, status: :created
+        else
+            render json: {errors: loan.errors.full_messages}, status: :unprocessable_entity
+        end
+    end
 
-  def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
-  end
+    def show
+      loan = Loan.find_by_id(params[:id])
+      if loan
+         pmt = loan.pmt
+         render json: {loan: loan.id, pmt: pmt}, status: :ok
+      else
+         render json: {error: "loan not found"}, status: :not_found
+      end
+    end
+
+    private 
+    def loan_params
+        params.require(:loan).permit(:value, :months, :rate, :client_id)
+    end
 end
