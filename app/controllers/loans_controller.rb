@@ -4,7 +4,9 @@ class LoansController < ApplicationController
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    @loan = Loan.find(params[:id])
+    render :show
+  rescue
+    render_error(fields: @loan.errors.messages)
   end
 end
