@@ -9,16 +9,11 @@ clients data inputs
 
 Main Opensource libraries used in this project.
 
-**[Rackcors]**
-**[Jbuider]**
-**[Rspec]**
-**[FactoryBot]**
-**[ShouldaMatchers]**
-[Rackcors]:https://github.com/cyu/rack-cors
-[Jbuider]:https://github.com/rails/jbuilder
-[Rspec]:https://github.com/rspec/rspec
-[FactoryBot]:https://github.com/thoughtbot/factory_bot
-[ShouldaMatchers]:https://github.com/thoughtbot/shoulda-matchers
+- [sackcors]:https://github.com/cyu/rack-cors
+- [sbuider]:https://github.com/rails/jbuilder
+- [sspec]:https://github.com/rspec/rspec
+- [sactoryBot]:https://github.com/thoughtbot/factory_bot
+- [shouldasatchers]:https://github.com/thoughtbot/shoulda-matchers
 
 ### Requirements
 
@@ -86,5 +81,5 @@ Run
 $ bundle exec rspec
 ```
 
-### Develop and teste by  👾**[matts]** 👾
+### Develop and tested by  👾**[matts]** 👾
 [matts]:https://www.linkedin.com/in/felixmatheus/
