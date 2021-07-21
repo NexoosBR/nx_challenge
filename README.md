@@ -1,65 +1,90 @@
-# README
+# Nexoos Loan Api
 
-Nexoos Challenge
+#Loan API
+- This API provides loans calculations through 
+clients data inputs
+- It receives the client's present value (PV), period (months), and interest rate (%), and, calculates the PMT(monthly payment).
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+## GEMs 
 
-Deve-se:
+Main Opensource libraries used in this project.
 
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
+**[Rackcors]**
+**[Jbuider]**
+**[Rspec]**
+**[FactoryBot]**
+**[ShouldaMatchers]**
+[Rackcors]:https://github.com/cyu/rack-cors
+[Jbuider]:https://github.com/rails/jbuilder
+[Rspec]:https://github.com/rspec/rspec
+[FactoryBot]:https://github.com/thoughtbot/factory_bot
+[ShouldaMatchers]:https://github.com/thoughtbot/shoulda-matchers
 
-Sobre a PMT:
+### Requirements
 
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
+You need to install ruby 2.7.2 to get this project running.
+## Installation
 
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
-
-
-Post Request para Loans:
-
+```sh
+$ bundle install
+$ rake db:create
+$ rake db:migrate
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+
+Upload server
+
+```sh
+$ rails s
 ```
 
-Expected Response:
+## Documentation
 
+📖 **[Read the documentation for the latest version][postman].** 
+[postman]:https://documenter.getpostman.com/view/2112758/TzsWuA3B
+
+## Endpoints
+
+Loans POST request
+
+```sh
+curl --request POST --header "Content-Type: application/json" -d '{"rate": 0.2, "value": 1000,"months_period": 12}' http://localhost:3000/loans
 ```
+Response format
+
+```json
 {
   "loan": {
     "id": 1
   }
 }
 ```
+Loans GET request
 
-Get Request para Loans:
-
-```curl --request GET http://localhost:3000/loans/1```
-
-Expected Response:
+```sh
+curl --request GET http://localhost:3000/loans/1
 ```
+
+Response format
+
+```json
 {
   "loan": {
-    "id": 1, "pmt": 308
+    "id": 4,
+    "pmt": 99.17
   }
 }
 ```
+## Rpsec Tests
 
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
+### Test's coverage using BDD: 
+- unit 
+- functional
 
-Pontos extras para:
+Run
 
-- Documentação
-- Testes unitários e/ou de integração com Rspec
+```sh
+$ bundle exec rspec
+```
 
-Envio:
-
-Envie o seu código pronto através de um Pull Request para esse repositório
+### Develop and teste by  👾**[matts]** 👾
+[matts]:https://www.linkedin.com/in/felixmatheus/
