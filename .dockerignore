@@ -1,0 +1,11 @@
+.bin
+.git
+.gitignore
+.bundleignore
+.bundle
+.byebug_history
+.rspec
+tmp
+log
+config/deploy
+coverage/
