@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Loan, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:loan) { build :loan }
+
+  it 'calculate parcel PMT' do
+    loan.save
+
+    expect(loan.pmt_calc.to_f).to eq(1213.64)
+  end
 end

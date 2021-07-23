@@ -18,7 +18,6 @@ Cálculo da PMT:
 
 http://ghiorzi.org/amortiza.htm
 
-
 Post Request para Loans:
 
 ```
@@ -39,9 +38,10 @@ Expected Response:
 
 Get Request para Loans:
 
-```curl --request GET http://localhost:3000/loans/1```
+`curl --request GET http://localhost:3000/loans/1`
 
 Expected Response:
+
 ```
 {
   "loan": {
@@ -51,6 +51,7 @@ Expected Response:
 ```
 
 Requisitos técnicos
+
 - Usar Ruby on Rails
 - É permitido o uso de frameworks e gems
 - Deve ser usado GIT para versionamento
@@ -63,3 +64,39 @@ Pontos extras para:
 Envio:
 
 Envie o seu código pronto através de um Pull Request para esse repositório
+
+# Resolução do desafio:
+
+## Para instalar as Gems execute no terminal:
+
+```
+bundle install
+```
+
+## Para criar o banco de dados sqlite3 excute no terminal:
+
+```
+rails db:create db:migrate
+```
+
+## Para rodar os testes excute no terminal:
+
+```
+rspec
+```
+
+## Para rodar a aplicação em http://localhost:3000/
+
+```
+rails s
+```
+
+## Acesse a aplicação
+
+```
+http://localhost:3000
+```
+
+## Documentação da API com seus endpoints está disponível em:
+
+[Postman](https://documenter.getpostman.com/view/4148278/TzsYPUsq)

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_07_18_171725) do
 
   create_table "loans", force: :cascade do |t|
     t.float "financed_amount"
-    t.float "rate"
+    t.decimal "rate", precision: 4, scale: 2
     t.integer "months"
     t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
