@@ -70,8 +70,13 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    database_cleaner-sequel (2.0.0)
+      database_cleaner-core (~> 2.0.0)
+      sequel
     diff-lcs (1.4.4)
     docile (1.4.0)
+    email_validator (2.2.3)
+      activemodel
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -157,6 +162,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    sequel (5.46.0)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     simplecov (0.21.2)
@@ -188,6 +194,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner-active_record
+  database_cleaner-sequel
+  email_validator
   factory_bot_rails
   faker
   listen (~> 3.3)

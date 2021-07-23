@@ -6,6 +6,7 @@ RUN apt-get update -qq \
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
+RUN bundle config --local disable_platform_warnings true
 RUN bundle install
 COPY . /myapp
 
