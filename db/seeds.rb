@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Loan = Loan.create({
+  "value": "1000",
+  "taxa": "0.20",
+  "quantity": "5",
+  "pmt": "2000.0"
+})

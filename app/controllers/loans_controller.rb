@@ -1,10 +1,32 @@
 class LoansController < ApplicationController
+  before_action :get, only: [:show]
   def create
-    render json: { loan: { id: 1 } }
+    loan = Loan.new(loan_params)
+    if loan.save
+      pmt = CreatePmtService.new(loan_params).create
+      loan.update(pmt: pmt)
+      render json: { message: 'Loan created with success', loan: loan }, status: :created
+    else
+      render json: loan.errors, status: :unprocessable_entity
+    end
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    pmt = CreatePmtService.new({ id: @loan.id }).format
+    render json: pmt
+  end
+
+  private
+
+  def get
+    @loan = Loan.find(params[:id])
+  end
+
+  def loan_params
+    params.require(:loan).permit(
+      :value,
+      :taxa,
+      :quantity
+    )
   end
 end
