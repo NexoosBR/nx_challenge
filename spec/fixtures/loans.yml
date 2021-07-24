@@ -1,0 +1,6 @@
+loan_one:
+  id: 1
+  value: 1000
+  taxa: 0.20
+  quantity: 5
+  pmt: 2000
