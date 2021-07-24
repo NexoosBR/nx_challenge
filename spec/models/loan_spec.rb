@@ -16,11 +16,11 @@ RSpec.describe Loan, type: :model do
     it { is_expected.to validate_numericality_of(:period).is_less_than_or_equal_to(60) }
 
     it { is_expected.to validate_presence_of(:period_type) }
-    it { is_expected.to validate_numericality_of(:period_type).only_integer }
+    it { should define_enum_for(:period_type) }
 
-    it { is_expected.to validate_presence_of(:loan_start_date) }
     it 'Testing loan date' do
       expect(FactoryBot::build(:loan, :loan_with_future_start_date)).to_not be_valid
+      expect(FactoryBot::build(:loan, :loan_with_past_start_date)).to_not be_valid
     end
 
     it { is_expected.to validate_presence_of(:client) }
@@ -30,9 +30,9 @@ RSpec.describe Loan, type: :model do
     it { is_expected.to belong_to(:client) }
   end
 
-  context 'Financial calculating methods' do
-    it 'Calculating PMT for a loan' do
-      
+  context 'Calculating Loan Payment (PMT)' do
+    it 'For simples values' do
+      expect(FactoryBot::build(:loan, :simple_loan_payment).fixed_loan_payment).to eq(945.60)
     end
   end
 end
