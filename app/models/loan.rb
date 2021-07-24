@@ -1,4 +1,8 @@
 class Loan < ApplicationRecord
+
+  attr_accessor :loan_amount, :interest_rate, :period, :period_type
+  attr_reader :loan_start_date, :client
+
   enum period_type: { monthly: 0, yearly: 1 }
 
   # Basic Validations
