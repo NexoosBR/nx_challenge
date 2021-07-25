@@ -5,6 +5,7 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.all
 
+    # render json: @clients, :include => [ :loans => { :except => [:created_at, :client_id, :updated_at]  }]
     render json: @clients
   end
 
@@ -46,6 +47,6 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:name, :email, :nickname, :birthdate)
+      params.require(:client).permit(:name, :email, :nickname)
     end
 end
