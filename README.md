@@ -31,12 +31,12 @@ Desafio para desenvolvedor rails júnior Nexoos
       - [ATUALIZANDO (PATCH) as informações de um Empréstimo](#atualizando--patch--as-informa--es-de-um-empr-stimo)
       - [ADICIONANDO (POST) um novo Empréstimo](#adicionando--post--um-novo-empr-stimo)
     + [Apagando (DELETE) um determinado Empréstimo através de seu id](#apagando--delete--um-determinado-empr-stimo-atrav-s-de-seu-id)
-  * [Utilizando o Postman](#utilizando-o-postman)
 - [Executando bateria de testes](#executando-bateria-de-testes)
   * [Com Docker e Docker-compose](#com-docker-e-docker-compose)
   * [SEM Docker](#sem-docker)
     + [Para executar toda a bateria de testes:](#para-executar-toda-a-bateria-de-testes-)
 - [Contribuir](#contribuir)
+- [Contato](#contato)
 ## Visão Geral
 
 Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
@@ -160,6 +160,11 @@ Configurando o ambiente de Desenvolvimento:
 
 Por se tratar de uma aplicação back-end onde sua utilização é realizada através de chamada a uma API, sugerimos utlização do [curl](https://curl.se/) ou [Postman](https://www.postman.com) para interagir com a mesma.
 
+Por se tratar de um desafio simples, trataremos o uso da API apenas com o curl. Caso queira realizar os testes com o Postman, você pode encontrar mais informações de utilizá-lo nos links abaixo:
+* https://idratherbewriting.com/learnapidoc/docapis_understand_curl.html
+* https://medium.com/beadlist/using-curl-for-api-testing-463803304620
+* https://linuxize.com/post/curl-rest-api/
+
 Primeiramente, inicie a aplicação, subindo os containers em segundo plano (-d):
 ```
 docker-compose up -d
@@ -229,8 +234,6 @@ curl --request GET http://localhost:3000/loans/{id}
 curl --X DELETE http://localhost:3000/loans/{id}
 ```
 
-### Utilizando o Postman
-
 ## Executando bateria de testes
 
 ### Com Docker e Docker-compose
@@ -264,4 +267,10 @@ rspec spec/controllers/nome_da_espec.rb
 ## Contribuir
 * Repositório original no Github: [NexoosBR/nx_challenge](https://github.com/NexoosBR/nx_challenge)
 
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/NexoosBR/nx_challenge)
+## Contato
+
+Desafio feito por Rafael Viana Lopes Araújo
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/rafael-viana-75529b32)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rvlaraujo)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rvlaraujo@gmail.com)
