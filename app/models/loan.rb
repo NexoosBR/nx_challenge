@@ -9,7 +9,7 @@ class Loan < ApplicationRecord
   validates :loan_amount, numericality: { greater_than: 0, less_than_or_equal_to: 999_999 }, presence: true
   validates :interest_rate, numericality: { greater_than: 0, less_than_or_equal_to: 100 }, presence: true
   validates :period, numericality: { greater_than: 0, less_than_or_equal_to: 60, only_integer: true }, presence: true
-  validates_date :loan_start_date, between: [1.day.before, 60.day.after]
+  validates_datetime :loan_start_date, between: [DateTime.now.in_time_zone(Time.zone).to_date, 61.day.after]
   validates_numericality_of :period_type, only_integer: true
 
   belongs_to :client
