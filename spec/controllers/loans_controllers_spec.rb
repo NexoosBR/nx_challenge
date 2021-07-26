@@ -1,19 +1,12 @@
 require "rails_helper" 
 
-RSpec.describe LoansController do
-  describe "GET show" do
-    it do
-      get :show, params: { id: 1 }
-      param = JSON.parse(response.body).with_indifferent_access
-      expect(param[:loan][:id]).to(eq(1))
-    end
-  end
+describe LoansController, type: :controller do
+  let(:loan) { create(:loan) }
+  let(:loan_params) { build(:loan).attributes }
+  let(:client) { create(:client) }
 
-  describe "POST show" do
-    it do
-      post :create
-      param = JSON.parse(response.body).with_indifferent_access
-      expect(param[:loan][:id]).to(eq(2))
-    end
+  it 'create a new loan' do
+    post 'create', params: { client_id: client.id, loan: loan_params }
+    expect(response).to have_http_status(:created)
   end
 end
