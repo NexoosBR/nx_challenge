@@ -6,7 +6,6 @@ class ClientsController < ApplicationController
     @clients = Client.all
 
     render json: @clients, root: true, include: [loans: { except: [:created_at, :client_id, :updated_at] }]
-    # render json: @clients
   end
 
   # GET /clients/1
