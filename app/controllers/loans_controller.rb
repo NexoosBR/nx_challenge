@@ -1,4 +1,9 @@
 class LoansController < ApplicationController
+
+  def index
+    
+  end
+
   def create
     render json: { loan: { id: 1 } }
   end
