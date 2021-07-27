@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_164429) do
+ActiveRecord::Schema.define(version: 2021_07_27_165649) do
 
   create_table "clients", force: :cascade do |t|
     t.text "email", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_164429) do
     t.integer "client_id", null: false
     t.decimal "amount", null: false
     t.integer "months", null: false
-    t.decimal "montly_rate", null: false
+    t.decimal "montly_rate_percent", null: false
     t.decimal "pmt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
