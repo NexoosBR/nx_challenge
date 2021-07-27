@@ -27,8 +27,6 @@ RSpec.describe Loan, type: :model do
     client = clients(:one)
     loan = Loan.create!(amount: 1000, months: 12, montly_rate_percent: 1,
       client: client)
-    puts "oi!"
-    puts loan.pmt
     expect(loan.pmt).to be_within(0.01).of(BigDecimal('88.85'))
   end
 end
