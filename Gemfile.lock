@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    api-pagination (4.8.2)
     bootsnap (1.7.6)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -90,6 +91,18 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -191,6 +204,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  api-pagination
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner-active_record
@@ -198,6 +212,7 @@ DEPENDENCIES
   email_validator
   factory_bot_rails
   faker
+  kaminari
   listen (~> 3.3)
   pg (~> 1.2.3)
   puma (~> 5.0)

@@ -3,9 +3,9 @@ class ClientsController < ApplicationController
 
   # GET /clients
   def index
-    @clients = Client.all
+    @clients = Client.all.page(params[:page])
 
-    render json: @clients, root: true, include: [loans: { except: [:created_at, :client_id, :updated_at] }]
+    paginate json: @clients, root: true, include: [loans: { except: [:created_at, :client_id, :updated_at] }]
   end
 
   # GET /clients/1
@@ -46,6 +46,6 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:name, :email, :nickname, loans_attributes: [:id, :fixed_loan_payment, :loan_amount, :interest_rate, :period, :period_type])
+      params.require(:client).permit(:name, :email, :nickname, loans_attributes: [:id, :fixed_loan_payment, :loan_amount, :interest_rate, :period])
     end
 end

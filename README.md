@@ -176,6 +176,22 @@ Seguem abaixo alguns exemplos de como utilizar o curl para interagir com apliaç
 ```
 curl --request GET http://localhost:3000/clients
 ```
+A aplicação possui paginação nos Clientes para melhoria de desempenho (estão limitadas a 15 por página), onde as informações sobre as mesmas são passadas via headers. Para acessá-las, use:
+```
+curl -v --request GET http://0.0.0.0:3000/clients
+...
+< Link: <http://0.0.0.0:3000/clients?page=3>; rel="last", <http://0.0.0.0:3000/clients?page=2>; rel="next"
+< Per-Page: 15
+< Total: 40
+...
+<
+BODY_CONTENT
+```
+
+Para navegar entre as páginas, troque 'numero_da_pagina_aqui'.
+```
+curl --location --request GET '0.0.0.0:3000/clients?page=numero_da_pagina_aqui'
+```
 ##### RECUPERANDO (GET) um Cliente específico atavrés de seu id
 ```
 curl --request GET http://localhost:3000/clients/{id}
