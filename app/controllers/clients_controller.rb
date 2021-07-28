@@ -46,6 +46,6 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:name, :email, :nickname, loans_attributes: [:id, :loan_amount, :interest_rate, :period, :period_type])
+      params.require(:client).permit(:name, :email, :nickname, loans_attributes: [:id, :fixed_loan_payment, :loan_amount, :interest_rate, :period, :period_type])
     end
 end

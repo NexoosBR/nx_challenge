@@ -1,6 +1,5 @@
 class Loan < ApplicationRecord
-  attribute :period_type, :integer, default: 0
-  attribute :loan_start_date, :datetime, default: -> { DateTime.now.in_time_zone(Time.zone) }
+  attribute :fixed_loan_payment, :decimal
 
   enum period_type: { monthly: 0, yearly: 1 }
 
@@ -13,4 +12,8 @@ class Loan < ApplicationRecord
 
   belongs_to :client
   accepts_nested_attributes_for :client
+
+  def fixed_loan_payment
+    FixedLoanPaymentCalculatorService.new(self).call
+  end
 end
