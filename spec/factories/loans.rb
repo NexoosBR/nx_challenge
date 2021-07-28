@@ -21,4 +21,10 @@ FactoryBot.define do
     interest_rate { 2 }
     period { 12 }
   end
+
+  trait :complex_loan_payment do
+    loan_amount { 10_000.568 }
+    interest_rate { 0.25 }
+    period { 60 }
+  end
 end

@@ -1,5 +1,4 @@
 class Loan < ApplicationRecord
-
   attribute :period_type, :integer, default: 0
   attribute :loan_start_date, :datetime, default: -> { DateTime.now.in_time_zone(Time.zone) }
 
@@ -14,12 +13,4 @@ class Loan < ApplicationRecord
 
   belongs_to :client
   accepts_nested_attributes_for :client
-
-  def fixed_loan_payment_calculating
-    interest_rate_percentage = (interest_rate / 100.0)
-    interest_rate_factor = (1 + interest_rate_percentage)**period
-    dividend = (loan_amount * interest_rate_percentage) * interest_rate_factor
-    divider = interest_rate_factor - 1
-    self.fixed_loan_payment = (dividend / divider).round(2)
-  end
 end

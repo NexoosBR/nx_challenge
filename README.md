@@ -239,7 +239,7 @@ curl --X DELETE http://localhost:3000/loans/{id}
 ### Com Docker e Docker-compose
 Para rodar a bateria de tests completa:
 ```
-docker-compose run web rspec --format d
+docker-compose run web rspec --format documentation
 ```
 Caso queira executar uma 'spec' de um model específico:
 ```

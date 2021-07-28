@@ -28,10 +28,4 @@ RSpec.describe Loan, type: :model do
   context 'associations' do
     it { is_expected.to belong_to(:client) }
   end
-
-  context 'Calculating Fixed Loan Payment (PMT)' do
-    it 'For simples values' do
-      expect(FactoryBot::build(:loan, :simple_loan_payment).fixed_loan_payment_calculating).to eq(945.60)
-    end
-  end
 end
