@@ -5,6 +5,7 @@ RUN apt-get update -qq \
     && apt-get install libpq-dev
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock  /tmp/Gemfile.lock
 RUN bundle config --local disable_platform_warnings true
 RUN bundle install
 COPY . /myapp

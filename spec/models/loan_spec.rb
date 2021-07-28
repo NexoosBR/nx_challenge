@@ -15,13 +15,6 @@ RSpec.describe Loan, type: :model do
     it { is_expected.to validate_numericality_of(:period).is_greater_than(0) }
     it { is_expected.to validate_numericality_of(:period).is_less_than_or_equal_to(60) }
 
-    it { should define_enum_for(:period_type) }
-
-    it 'Testing loan date' do
-      expect(FactoryBot::build(:loan, :loan_with_future_start_date)).to_not be_valid
-      expect(FactoryBot::build(:loan, :loan_with_past_start_date)).to_not be_valid
-    end
-
     it { should belong_to(:client) }
   end
 

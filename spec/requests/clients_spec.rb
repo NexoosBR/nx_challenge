@@ -12,16 +12,16 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/clients", type: :request do
+RSpec.describe '/clients', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Client. As you add validations to Client, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    skip('Add a hash of attributes valid for your model')
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    skip('Add a hash of attributes invalid for your model')
   }
 
   # This should return the minimal set of values that should be in the headers
@@ -32,92 +32,92 @@ RSpec.describe "/clients", type: :request do
     {}
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Client.create! valid_attributes
       get clients_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       client = Client.create! valid_attributes
       get client_url(client), as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Client" do
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Client' do
         expect {
           post clients_url,
                params: { client: valid_attributes }, headers: valid_headers, as: :json
         }.to change(Client, :count).by(1)
       end
 
-      it "renders a JSON response with the new client" do
+      it 'renders a JSON response with the new client' do
         post clients_url,
              params: { client: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Client" do
+    context 'with invalid parameters' do
+      it 'does not create a new Client' do
         expect {
           post clients_url,
                params: { client: invalid_attributes }, as: :json
         }.to change(Client, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new client" do
+      it 'renders a JSON response with errors for the new client' do
         post clients_url,
              params: { client: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        skip('Add a hash of attributes valid for your model')
       }
 
-      it "updates the requested client" do
+      it 'updates the requested client' do
         client = Client.create! valid_attributes
         patch client_url(client),
               params: { client: new_attributes }, headers: valid_headers, as: :json
         client.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "renders a JSON response with the client" do
+      it 'renders a JSON response with the client' do
         client = Client.create! valid_attributes
         patch client_url(client),
               params: { client: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a JSON response with errors for the client" do
+    context 'with invalid parameters' do
+      it 'renders a JSON response with errors for the client' do
         client = Client.create! valid_attributes
         patch client_url(client),
               params: { client: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested client" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested client' do
       client = Client.create! valid_attributes
       expect {
         delete client_url(client), headers: valid_headers, as: :json

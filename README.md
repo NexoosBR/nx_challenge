@@ -120,27 +120,27 @@ Caso prefira usar Docker:
 
 ### Rodando com Docker e Docker-Compose
 Na raíz do projeto, abra um terminal e execute as seguintes ações:
-1 - fazer o build do projeto:
+1 - Instalar as gems localmente
 ```
-docker-compose build
+bundle install
 ```
 2 - subindo os containers em segundo plano (-d):
 ```
 docker-compose up -d
 ```
-2.1 - para verificar se os containers subiram sem problema, executar o comando: 
+3.1 - para verificar se os containers subiram sem problema, executar o comando: 
 ```
 docker-compose logs
 ```
-3 - criar a base de dados, executar migrations: 
+4 - criar a base de dados, executar migrations: 
 ```
 docker-compose run web rails db:create db:migrate
 ```
-3.1 - caso queira executar os comandos acima e popular a base de dados:
+4.1 - caso queira executar os comandos acima e popular a base de dados:
 ```
 docker-compose run web rails db:setup
 ```
-3.2 - caso queira apagar as bases de dados, execute:
+4.2 - caso queira apagar as bases de dados, execute:
 ```
 docker-compose run web rails db:drop
 ```
@@ -176,29 +176,57 @@ Seguem abaixo alguns exemplos de como utilizar o curl para interagir com apliaç
 ```
 curl --request GET http://localhost:3000/clients
 ```
-##### RECUPERANDO (GET) Clientes ordenados por ordem Alfabética do Nome
-```
-
-```
-##### RECUPERANDO (GET) Clientes ordenados por ordem pela quantidade de empréstimos
-```
-
-```
 ##### RECUPERANDO (GET) um Cliente específico atavrés de seu id
 ```
 curl --request GET http://localhost:3000/clients/{id}
 ```
 ##### ATUALIZANDO (PATCH) as informações de um Cliente
 ```
-
+curl --location --request PATCH '0.0.0.0:3000/clients/{id}' \
+--header 'Content-Type: application/json' \
+--data-raw ' { "client":
+    {
+    "name": "novo_nome_ do_cliente_aqui",
+    "email": "novo_email_do_client_aqui",
+    "nickname": "novo_apelido_do_cliente_aqui",
+    }
+}'
 ```
 ##### ADICIONANDO (POST) um novo Cliente
 ```
-
+curl --location --request POST '0.0.0.0:3000/clients' \
+--header 'Content-Type: application/json' \
+--data-raw '{ "client":
+    {
+        "name": "nome_ do_cliente_aqui",
+        "email": "email_do_cliente_aqui",
+        "nickname": "apelido_do_cliente_aqui"
+    }
+}
 ```
 ##### ADICIONANDO (POST) um novo Cliente com um EMPRÉSTIMO
 ```
-
+curl --location --request POST '0.0.0.0:3000/clients' \
+--header 'Content-Type: application/json' \
+--data-raw ' { "client":
+    {
+    "name": "nome_ do_cliente_aqui",
+    "email": "email_do_cliente_aqui",
+    "nickname": "apelido_do_cliente_aqui"
+    "loans_attributes": [
+        {
+          "loan_amount": "xxx.xx",
+          "interest_rate": "x",
+          "period": x
+        },
+        {
+          "loan_amount": "xx.xx",
+          "interest_rate": "xx",
+          "period": xx
+        }
+    ]
+    }
+}'
 ```
 #### Apagando (DELETE) um determinado cliente através de seu id
 ```
@@ -209,25 +237,35 @@ curl --X DELETE http://localhost:3000/clients/{id}
 ```
 curl --request GET http://localhost:3000/loans
 ```
-##### RECUPERANDO (GET) todos os Empréstimos de um determinado Cliente
-```
-
-```
-##### RECUPERANDO (GET) todos os Empréstimos de um determinado Cliente ordenados pelo valor do Capital (Loan Amount)
-```
-
-```
-##### RECUPERANDO (GET) um Empréstiom específico atavrés de seu id
+##### RECUPERANDO (GET) um Empréstimo específico atavrés de seu id
 ```
 curl --request GET http://localhost:3000/loans/{id}
 ```
 ##### ATUALIZANDO (PATCH) as informações de um Empréstimo
 ```
-
+curl --location --request PATCH '0.0.0.0:3000/loans/{id}' \
+--header 'Content-Type: application/json' \
+--data-raw ' { "loan":
+      {
+        "loan_amount": "novo_valor_aqui",
+        "interest_rate": "nova_taxa_aqui",
+        "period": novo_periodo,
+        "client_id": id_cliente
+    }
+ }'
 ```
 ##### ADICIONANDO (POST) um novo Empréstimo
 ```
-
+curl --location --request POST '0.0.0.0:3000/loans/' \
+--header 'Content-Type: application/json' \
+--data-raw ' { "loan":
+      {
+        "loan_amount": "valor_desejado_aqui",
+        "interest_rate": "taxa_desejada_aqui",
+        "period": period_desejado_aqui,
+        "client_id": id_cliente
+    }
+ }'
 ```
 #### Apagando (DELETE) um determinado Empréstimo através de seu id
 ```
