@@ -60,6 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    apipie-rails (0.5.19)
+      rails (>= 4.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -165,6 +167,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apipie-rails
   bootsnap (>= 1.4.4)
   byebug
   listen (~> 3.3)
