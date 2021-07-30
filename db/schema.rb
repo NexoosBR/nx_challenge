@@ -10,6 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_07_30_165129) do
+
+  create_table "loans", force: :cascade do |t|
+    t.integer "months", null: false
+    t.float "monthly_tax", null: false
+    t.decimal "amount", precision: 30, scale: 2, null: false
+    t.decimal "pmt", precision: 30, scale: 2, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
