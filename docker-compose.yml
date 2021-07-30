@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && rails s -p 3000  -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - db:/db
+      - bundle_path:/bundle # New
+    environment:
+      - BUNDLE_PATH=/bundle/vendor #New
+    ports:
+      - "3000:3000"
+volumes:
+  db:
+  bundle_path:
