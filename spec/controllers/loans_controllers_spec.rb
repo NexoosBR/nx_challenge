@@ -24,13 +24,22 @@ RSpec.describe LoansController, type: :controller do
 
   describe "#create" do
     context 'when params are valid' do
-      it 'shows id field' do
-        post :create, params: valid_params
-        expect(response).to have_http_status(:ok)
 
+      before { post :create, params: valid_params }
+
+      it 'returns status ok' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'shows id field' do
         json = JSON.parse(response.body)
         expect(json['loan']['id']).to eq(1)
       end
+
+      it 'creates a loan record' do
+        expect(Loan.last.id).to eq 1
+      end
+
     end
 
     context 'when params are not valid' do
@@ -41,14 +50,17 @@ RSpec.describe LoansController, type: :controller do
       end
 
       it 'shows status = unprocessable entity' do
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status :unprocessable_entity
+      end
+
+      it 'does not create any record' do
+        expect(Loan.count).to eq 0
       end
 
       it 'shows error message' do
         json = JSON.parse(response.body)
-        expect(json['months']).to include('must be greater than 0')
+        expect(json['months']).to include 'must be greater than 0'
       end
     end
-
   end
 end
