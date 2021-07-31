@@ -19,12 +19,17 @@ Cálculo da PMT:
 http://ghiorzi.org/amortiza.htm
 
 
-Post Request para Loans:
+## API
+
+### Loans
+
+Creating new loan:
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+curl --request POST http://localhost:3000/loans \
+	-d months=12 \
+ 	-d monthly_tax=0.2 \
+ 	-d amount=1000
 ```
 
 Expected Response:
@@ -37,29 +42,40 @@ Expected Response:
 }
 ```
 
-Get Request para Loans:
+Fetching a loan:
 
-```curl --request GET http://localhost:3000/loans/1```
+```
+curl --request GET http://localhost:3000/loans/1
+```
 
 Expected Response:
 ```
 {
   "loan": {
-    "id": 1, "pmt": 308
+    "id": 1,
+    "pmt": 225.26
   }
 }
 ```
 
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
 
-Pontos extras para:
+## Running tests
 
-- Documentação
-- Testes unitários e/ou de integração com Rspec
+```
+rspec spec
+```
 
-Envio:
 
-Envie o seu código pronto através de um Pull Request para esse repositório
+
+## Setting up the development environment
+
+To run this app locally, you can use the command below.
+
+Requirements: docker and docker-compose.
+
+```
+docker-compose up
+```
+
+
+
