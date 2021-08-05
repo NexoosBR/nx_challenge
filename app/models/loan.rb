@@ -1,7 +1,10 @@
 class Loan < ApplicationRecord
-    validades :present_value, presence: true, numericality: { greater_than: 0 }
-    validades :periods, presence: true, numericality: { greater_than: 0 }
-    validades :rate, presence: true, numericality: { greater_than: 0 }
-    validates :pmt, presence: true
+    validates :present_value, presence: true, numericality: { greater_than: 0, lower_than: 1 }
+    validates :periods, presence: true, numericality: { greater_than: 0 }
+    validates :rate, presence: true, numericality: { greater_than: 0 }
     
+    before_create do
+        result = present_value * (( rate * ((1 + rate) ** periods)) / (((1 + rate) ** periods) - 1))
+        self.pmt = result.round(2)
+    end 
 end
