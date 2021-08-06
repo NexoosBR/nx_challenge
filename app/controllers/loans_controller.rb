@@ -4,7 +4,7 @@ class LoansController < ApplicationController
     if @loan.save
       render json: { loan: { id: @loan[:id] } }
     else
-      render json: { errors: loan.errors, status: :internal_server_error }
+      render json: { errors: @loan.errors, status: :internal_server_error }
     end
   end
 
@@ -18,5 +18,3 @@ class LoansController < ApplicationController
       params.permit(:present_value, :rate, :periods)
     end
 end
-
-# present_value:float rate:float periods:integer pmt:float

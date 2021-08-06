@@ -43,17 +43,22 @@ RSpec.describe Loan, type: :model do
   end
 
   it "is not valid with present_value as string" do
-    subject.periods = "test"
+    subject.present_value = "test"
     expect(subject).to_not be_valid
   end
 
   it "is not valid with rate as string" do
-    subject.periods = "test"
+    subject.rate = "test"
     expect(subject).to_not be_valid
   end
 
   it "is not valid with periods as string" do
     subject.periods = "test"
+    expect(subject).to_not be_valid
+  end
+
+  it "is not valid with rate greater than one" do
+    subject.rate = 1.1
     expect(subject).to_not be_valid
   end
 end
