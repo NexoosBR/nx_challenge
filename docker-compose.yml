@@ -7,6 +7,6 @@ services:
         stdin_open: true
         tty: true
         volumes:
-            - ./rails-api:/var/www
+            - "./rails-api:/var/www"
         ports:
             - "3000:3000"
