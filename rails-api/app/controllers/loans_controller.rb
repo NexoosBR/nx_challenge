@@ -13,7 +13,7 @@ class LoansController < ApplicationController
 				months:months})
       render json: { loan: loan.attributes.merge(pmt: loan.pmt) }
 		rescue ActiveModel::ValidationError => e
-      render json:{'erros': e}, status: 400
+      render json:{'errors': e}, status: 400
     rescue => e
       Rails.logger.info e
       render body:nil, status: 500

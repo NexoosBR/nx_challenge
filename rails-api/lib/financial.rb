@@ -10,7 +10,7 @@ module Financial
       ) unless n.is_a? Integer
       raise ArgumentError.new(
         "Expected a float value with two decimal places, Parameter Taxa got #{i}"
-      ) unless max_decimal_places(i)
+      ) unless max_four_decimal_places(i)
 
       return (pv*((i*((1+i)**n)) / (((1+i)**n) - 1))).round(2)
 
@@ -32,7 +32,7 @@ module Financial
 
   private
 
-  def self.max_decimal_places(i)
+  def self.max_four_decimal_places(i)
     begin
 
       raise ArgumentError.new(

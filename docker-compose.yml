@@ -1,12 +1,12 @@
 version: '3.7'
 services:
-    api:
-        container_name: nxapi
-        build: ./rails-api
-        command: bash -c "rm -f tmp/pids/server.pid && rake db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
-        stdin_open: true
-        tty: true
-        volumes:
-            - "./rails-api:/var/www"
-        ports:
-            - "3000:3000"
+  api:
+    container_name: nxapi
+    build: ./rails-api
+    command: bash -c "rm -f tmp/pids/server.pid && rake db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./rails-api:/var/www"
+    ports:
+      - "3000:3000"
