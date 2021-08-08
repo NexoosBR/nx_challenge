@@ -11,5 +11,5 @@ COPY entrypoint.sh /usr/bin/
 RUN dos2unix /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-RUN rake db:schema:load
+RUN rake db:reset
 EXPOSE 3000

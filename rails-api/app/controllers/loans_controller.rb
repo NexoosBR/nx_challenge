@@ -11,7 +11,7 @@ class LoansController < ApplicationController
 				value:value,
 				taxa:taxa,
 				months:months})
-      render json: { loan: loan.attributes.merge(pmt: loan.pmt) }
+      render json: { loan: { id: loan.id } }
 		rescue ActiveModel::ValidationError => e
       render json:{'errors': e}, status: 400
     rescue => e
@@ -24,7 +24,7 @@ class LoansController < ApplicationController
 		begin
 			id = params[:id].to_i
 			loan = Loan.find(id)
-			render json: { loan: loan.attributes.merge(pmt: loan.pmt)}
+			render json: { loan: { id:loan.id, pmt:loan.pmt } }
 		rescue ActiveRecord::RecordNotFound => e
 			render body: nil, :status => 204
 		rescue => e
