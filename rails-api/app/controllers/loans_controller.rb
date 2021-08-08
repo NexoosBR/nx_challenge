@@ -33,6 +33,8 @@ class LoansController < ApplicationController
 		end
 	end
 
+	protected
+
   def create_a_loan(attributes = {})
     begin
       loan = Loan.new(attributes)
@@ -44,9 +46,6 @@ class LoansController < ApplicationController
 			raise e
     end
 	end
-
-
-  protected
 
 	def validate_params_show
 		render body: nil, :status => 422 unless (params[:id].present?) && (!params[:id].to_i.zero?) && (Integer(params[:id]) rescue false)

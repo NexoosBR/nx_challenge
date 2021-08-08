@@ -12,7 +12,8 @@ module Financial
         "Expected a float value with two decimal places, Parameter Taxa got #{i}"
       ) unless max_four_decimal_places(i)
 
-      return (pv*((i*((1+i)**n)) / (((1+i)**n) - 1))).round(2)
+			termo_comum = (1+i)**n
+      return (pv*((i*termo_comum) / (termo_comum - 1))).round(2)
 
     rescue => e
       raise e
