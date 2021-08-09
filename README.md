@@ -67,15 +67,18 @@ Envie o seu código pronto através de um Pull Request para esse repositório
 # Resolução da tarefa
 
 ## Primeiros comandos
-
-  gem install bundler
-  bundle install
-  rails db:create
-  rails db:migrate
+  ```
+    gem install bundler
+    bundle install
+    rails db:create
+    rails db:migrate
+  ```
 
 ## Executar o projeto
 
-  rails s
+  ```
+    rails s
+  ```
 
 ## Exemplos de requests
 
