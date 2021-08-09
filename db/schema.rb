@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_08_09_221938) do
     t.integer "instalment_number", default: 1
     t.decimal "pmt", precision: 15, scale: 2, default: "0.0"
     t.decimal "amount", precision: 15, scale: 2, default: "0.0"
+    t.decimal "tax", precision: 15, scale: 2, default: "0.0"
     t.date "due_date"
     t.integer "period_type"
     t.datetime "created_at", precision: 6, null: false
