@@ -63,3 +63,56 @@ Pontos extras para:
 Envio:
 
 Envie o seu código pronto através de um Pull Request para esse repositório
+
+# Resolução da tarefa
+
+## Primeiros comandos
+
+  gem install bundler
+  bundle install
+  rails db:create
+  rails db:migrate
+
+## Executar o projeto
+
+  rails s
+
+## Exemplos de requests
+
+Post Request para Loans:
+
+```
+curl --request POST http://localhost:3000/loans -d \
+ total_value=1000& \
+ monthly_fee=0.2& \
+ number_of_months=48
+```
+
+Expected Response:
+
+```
+{
+  "loan": {
+    "id": 1
+  }
+}
+```
+
+Get Request para Loans:
+
+```curl --request GET http://localhost:3000/loans/1```
+
+Expected Response:
+```
+{
+    "loan": {
+        "id": 1,
+        "pmt": 200.03165183630685,
+        "monthly_fee": 0.2,
+        "total_value": 1000.0,
+        "number_of_months": 48,
+        "created_at": "2021-08-09T21:34:25.160Z",
+        "updated_at": "2021-08-09T21:34:25.160Z"
+    }
+}
+

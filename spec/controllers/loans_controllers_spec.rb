@@ -1,19 +1,45 @@
-require "rails_helper" 
+require "rails_helper"
 
 RSpec.describe LoansController do
   describe "GET show" do
-    it do
-      get :show, params: { id: 1 }
-      param = JSON.parse(response.body).with_indifferent_access
-      expect(param[:loan][:id]).to(eq(1))
+    before(:each) do
+      loan_params = {
+        id: 1,
+        total_value: 1000,
+        monthly_fee: 0.3,
+        number_of_months: 48
+      }
+      Loan.create!(loan_params)
+    end
+    context '200 OK' do
+      it 'With a valid loan param' do
+        get :show, params: { id: 1 }
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context '404 Not Found' do
+      it 'When not found loan by id' do
+
+        get :show, params: { id: 0 }
+
+        expect(response).to have_http_status(:not_found)
+      end
     end
   end
 
   describe "POST show" do
-    it do
-      post :create
-      param = JSON.parse(response.body).with_indifferent_access
-      expect(param[:loan][:id]).to(eq(2))
+    context '201 Created' do
+      it 'When have one company and is in corporative plan' do
+        loan_params = {
+          "total_value": 1000,
+          "monthly_fee": 0.3,
+          "number_of_months": 48
+        }
+        post :create, params: {loan: loan_params}
+
+        expect(response).to have_http_status(:created)
+      end
     end
   end
 end
