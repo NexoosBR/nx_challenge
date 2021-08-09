@@ -6,9 +6,9 @@ class CalculatorPmtService
   end
 
   def call
-    
+    (amount * (tax * ( 1 + tax ) ** instalment_number) / (( 1 + tax ) ** instalment_number - 1)).round(2)
   end
-
+  
   private
 
   attr_reader :amount, :instalment_number, :tax
