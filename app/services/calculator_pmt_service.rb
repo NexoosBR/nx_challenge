@@ -1,8 +1,12 @@
-class Loan::CalculatorPmt
+class CalculatorPmtService
   def initialize(amount:, instalment_number:, tax:)
     @amount = amount
     @instalment_number = instalment_number
     @tax = tax
+  end
+
+  def call
+    
   end
 
   private
