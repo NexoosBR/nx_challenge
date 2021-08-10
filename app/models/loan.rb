@@ -1,5 +1,5 @@
 class Loan < ApplicationRecord
-  validates :due_date, :period_type, :amount, presence: true
+  validates :due_date, :amount, presence: true
   before_save :calculate_pmt
 
   private

@@ -6,7 +6,6 @@ class CreateLoans < ActiveRecord::Migration[6.1]
       t.decimal :amount, default: 0, scale: 2, precision: 15
       t.decimal :tax, default: 0, scale: 2, precision: 15
       t.date :due_date
-      t.integer :period_type
       
       t.timestamps
     end

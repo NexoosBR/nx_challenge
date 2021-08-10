@@ -6,6 +6,7 @@ class SaveLoanService
   def call
     loan = Loan.new(params)
     loan.save
+    loan
   end
 
   private
