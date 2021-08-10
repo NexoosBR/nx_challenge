@@ -1,5 +1,40 @@
 module Financial
 
+  def self.amortization(loan = {})
+    begin
+      raise ArgumentError.new(
+        "Expected a Loan Object, Parameter loan got #{loan.class}"
+      ) unless loan.present? && loan.class == Loan
+      i = 0
+      table = []
+      while(true) do
+        table.push(
+          {valor: nil,
+          taxa: nil,
+          amortized: nil,
+          balance: loan.value}) if i.zero?
+
+        table.push(
+          {valor: loan.pmt,
+          juros: juros(table[i-1][:balance], loan.taxa),
+          amortized: amortized(juros(table[i-1][:balance], loan.taxa), loan.pmt),
+          balance: balance(
+            table[i-1][:balance], 
+            amortized(
+              juros(
+                table[i-1][:balance], 
+                loan.taxa),
+              loan.pmt))}) unless i.zero?
+
+        break if i == loan.months
+        i+=1
+      end
+      return table
+    rescue => e
+      raise e
+    end
+  end
+
   def self.pmt(pv, i, n)
     begin
       raise ArgumentError.new(
@@ -32,6 +67,23 @@ module Financial
   end
 
   private
+
+  def self.balance(balance_ant, amortized)
+    balance = (balance_ant - amortized).to_d.round(2,:truncate).to_f
+    return balance > 0.00 ? balance : 0.00
+  end
+
+  def self.juros(balance_ant, taxa)
+    begin
+      return (balance_ant*percent_to_decimal(taxa)).round(2)
+    rescue => e
+      raise e
+    end
+  end
+
+  def self.amortized(juros_att, pmt)
+    return (pmt - juros_att).to_d.round(2,:truncate).to_f
+  end
 
   def self.max_four_decimal_places(i)
     begin

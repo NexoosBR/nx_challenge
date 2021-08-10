@@ -42,5 +42,30 @@ RSpec.describe LoansController do
     end
   end
 
+  describe "GET amortization" do
+
+    context "Acessando o end-point /amortization/:id" do
+
+      it "Retorna uma table de amortização" do
+        ultimo_mes = loan(:xpto).months
+        mes_zero = 0
+        get :amortization_table, params: { id: loan(:xpto).id }
+        param = JSON.parse(response.body).with_indifferent_access
+        expect(response).to have_http_status(200)
+        expect(param[:amortization].length - 1).to(eq(loan(:xpto).months))
+        expect(param[:amortization][mes_zero][:balance]).to(eq(loan(:xpto).value))
+        expect(param[:amortization][ultimo_mes][:balance].round(2)).to be_between(-0.05, 0.05)
+      end
+
+      it "Não encontrou o Loan e retorna uma resposta de corpo vazio e status 204" do
+        get :amortization_table, params: { id: 99999999999 }
+        expect(response).to have_http_status(204) 
+        expect(response.body.blank?).to(eq(true))
+      end
+
+    end
+
+  end
+
 
 end

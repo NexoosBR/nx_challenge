@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
-	before_action :validate_params_create, only: [:create]
-	before_action :validate_params_show, only: [:show]
+	before_action :validate_params_loan, only: [:create]
+	before_action :validate_param_id, only: [:show, :amortization_table]
 
   def create
     begin
@@ -15,8 +15,7 @@ class LoansController < ApplicationController
 		rescue ActiveModel::ValidationError => e
       render json:{'errors': e}, status: 400
     rescue => e
-      Rails.logger.info e
-      render body:nil, status: 500
+      houston(e)
     end
   end
 
@@ -28,9 +27,21 @@ class LoansController < ApplicationController
 		rescue ActiveRecord::RecordNotFound => e
 			render body: nil, :status => 204
 		rescue => e
-			Rails.logger.info e
-			render body: nil, status: 500
+			houston(e)
 		end
+	end
+
+	def amortization_table
+		begin
+			id = params[:id].to_i
+			loan = Loan.find(id)
+			render json: { loan: loan, amortization: Financial::amortization(loan) }
+		rescue ActiveRecord::RecordNotFound => e
+			render body: nil, :status => 204
+		rescue => e
+			houston(e)
+		end
+
 	end
 
 	protected
@@ -47,11 +58,11 @@ class LoansController < ApplicationController
     end
 	end
 
-	def validate_params_show
+	def validate_param_id
 		render body: nil, :status => 422 unless (params[:id].present?) && (!params[:id].to_i.zero?) && (Integer(params[:id]) rescue false)
 	end
 
-  def validate_params_create
+  def validate_params_loan
 			render body: nil, :status => 422 unless params[:value].present?
 			render body: nil, :status => 422 unless params[:taxa].present?
 			render body: nil, :status => 422 unless params[:months].present?
