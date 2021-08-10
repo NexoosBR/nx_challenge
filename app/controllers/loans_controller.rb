@@ -1,5 +1,6 @@
 class LoansController < ApplicationController
   def create
+    binding.pry
     render json: { loan: { id: 1 } }
   end
 
