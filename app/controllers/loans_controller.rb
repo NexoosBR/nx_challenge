@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
 	before_action :validate_params_loan, only: [:create]
-	before_action :validate_param_id, only: [:show, :amortization_table]
+	before_action :validate_param_id, only: [:show]
 
   def create
     begin
@@ -23,25 +23,17 @@ class LoansController < ApplicationController
 		begin
 			id = params[:id].to_i
 			loan = Loan.find(id)
-			render json: { loan: { id:loan.id, pmt:loan.pmt } }
+			url = request.path_info
+			if url.include?('amortization')
+				render json: { loan: { id:loan.id, pmt:loan.pmt }, amortization: Financial::amortization(loan) }
+			else
+				render json: { loan: { id:loan.id, pmt:loan.pmt } }
+			end
 		rescue ActiveRecord::RecordNotFound => e
 			render body: nil, :status => 204
 		rescue => e
 			houston(e)
 		end
-	end
-
-	def amortization_table
-		begin
-			id = params[:id].to_i
-			loan = Loan.find(id)
-			render json: { loan: loan, amortization: Financial::amortization(loan) }
-		rescue ActiveRecord::RecordNotFound => e
-			render body: nil, :status => 204
-		rescue => e
-			houston(e)
-		end
-
 	end
 
 	protected
