@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_221938) do
+ActiveRecord::Schema.define(version: 2021_08_10_103838) do
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string "remote_ip", default: "", null: false
+    t.string "key", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "loans", force: :cascade do |t|
     t.integer "instalment_number", default: 1
