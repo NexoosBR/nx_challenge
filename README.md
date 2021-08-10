@@ -91,10 +91,13 @@ Envie o seu código pronto através de um Pull Request para esse repositório
 Post Request para Loans:
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- total_value=1000& \
- monthly_fee=0.2& \
- number_of_months=48
+curl --location --request POST 'localhost:3000/loans' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+        "total_value": 1000,
+        "monthly_fee": 0.2,
+        "number_of_months": 48
+}'
 ```
 
 Expected Response:
@@ -109,7 +112,7 @@ Expected Response:
 
 Get Request para Loans:
 
-```curl --request GET http://localhost:3000/loans/1```
+```curl --location --request GET 'localhost:3000/loans/1'```
 
 Expected Response:
 ```
