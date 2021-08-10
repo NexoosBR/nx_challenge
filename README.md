@@ -80,6 +80,12 @@ Envie o seu código pronto através de um Pull Request para esse repositório
     rails s
   ```
 
+## Executar os testes
+
+  ```
+    rspec
+  ```
+
 ## Exemplos de requests
 
 Post Request para Loans:
