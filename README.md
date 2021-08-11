@@ -66,7 +66,26 @@ Envie o seu código pronto através de um Pull Request para esse repositório
 
 ---
 
-Resolução do desafio
+### Resolução do desafio
+* Instalar dependências:
+```
+bundle install
+```
+* Iniciar e realizar migração do banco de dados:
+```
+rails db:create
+rails db:migrate
+```
+
+* Iniciar API:
+```
+rails s
+```
+* Executar testes:
+```
+rspec
+```
+#### Funcionamento da API
 
 Post Request para Loans:
 
