@@ -1,7 +1,7 @@
 class Loan < ApplicationRecord
     validates :months, presence: true, numericality: { greater_than: 0 }
     validates :value, presence: true, numericality: { greater_than: 0 }
-    validates :fee, presence: true, numericality: { greater_than: 0 }
+    validates :fee, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
 
     before_create do
         i = fee.to_f/100
