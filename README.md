@@ -63,3 +63,40 @@ Pontos extras para:
 Envio:
 
 Envie o seu código pronto através de um Pull Request para esse repositório
+
+---
+
+Resolução do desafio
+
+Post Request para Loans:
+
+```
+curl --location --request POST 'http://localhost:3000/loans/' \
+--form 'value="1999"' \
+--form 'fee="0.03"' \
+--form 'months="2"'
+```
+
+Response:
+
+```
+{
+  "loan": {
+    "id": 1
+  }
+}
+```
+
+Get Request para Loans:
+
+```curl --location --request GET 'http://localhost:3000/loans/1'```
+
+Response:
+```
+{
+  "loan": {
+    "id": 1, 
+    "pmt": 1044.7
+  }
+}
+```

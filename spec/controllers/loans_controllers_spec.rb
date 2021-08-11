@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe LoansController do
   before do
-    post :create, params: { :value => 1999, :fee => 3, :months => 2 }
+    post :create, params: { :value => 1999, :fee => 0.03, :months => 2 }
   end
 
   describe "GET show" do
@@ -21,13 +21,13 @@ RSpec.describe LoansController do
     end
 
     it "Blank number of month" do
-      post :create, params: { :value => 1999, :fee => 3 }
+      post :create, params: { :value => 1999, :fee => 0.03 }
       param = JSON.parse(response.body).with_indifferent_access
       expect(param[:months]).to be == ["can't be blank", "is not a number"]
     end
 
     it "Blank value" do
-      post :create, params: { :fee => 3, :months => 2 }
+      post :create, params: { :fee => 0.03, :months => 2 }
       param = JSON.parse(response.body).with_indifferent_access
       expect(param[:value]).to be == ["can't be blank", "is not a number"]
     end

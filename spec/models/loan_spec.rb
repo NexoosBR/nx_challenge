@@ -4,7 +4,7 @@ RSpec.describe Loan, type: :model do
   before(:each) do
     @loan = Loan.new(
       value: 1999,
-      fee: 3,
+      fee: 0.03,
       months: 2
       )
   end
@@ -15,11 +15,6 @@ RSpec.describe Loan, type: :model do
   
   it "Invalid number of months" do
     @loan.months = 0
-    expect(@loan).not_to be_valid
-  end
-
-  it "Invalid Fee (> 100%)" do
-    @loan.fee = 142
     expect(@loan).not_to be_valid
   end
 
