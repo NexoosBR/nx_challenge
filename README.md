@@ -18,16 +18,20 @@ Cálculo da PMT:
 
 http://ghiorzi.org/amortiza.htm
 
-
+## Documentação das rotas
 Post Request para Loans:
 
+`POST na URL: http://localhost:3000/loans`
+
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+{
+    "value": 1000,
+    "tax": 0.02,
+    "months": 12
+}
 ```
 
-Expected Response:
+Response:
 
 ```
 {
@@ -39,18 +43,21 @@ Expected Response:
 
 Get Request para Loans:
 
-```curl --request GET http://localhost:3000/loans/1```
+`GET para URL: http://localhost:3000/loans/1`
 
-Expected Response:
+Response:
+
 ```
 {
   "loan": {
-    "id": 1, "pmt": 308
+    "id": 1,
+    "pmt": 94.56
   }
 }
 ```
 
 Requisitos técnicos
+
 - Usar Ruby on Rails
 - É permitido o uso de frameworks e gems
 - Deve ser usado GIT para versionamento
