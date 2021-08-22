@@ -1,6 +1,7 @@
-Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  resources :loans, only: [:show, :create] do
+Rails.application.routes.draw do
+  resources :clients, only: %i[index create show] do
+    resources :loans, only: %i[index create show]
   end
 end
