@@ -1,5 +1,3 @@
-require_relative '../helpers/calculate_pmt'
-
 class LoansController < ApplicationController
   def create
     @loan = Loan.new(loan_params)
