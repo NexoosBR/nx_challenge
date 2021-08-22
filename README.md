@@ -8,47 +8,7 @@ Deve-se:
 
 - Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
 - Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
-
-Sobre a PMT:
-
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
-
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
-
-
-Post Request para Loans:
-
-```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
-```
-
-Expected Response:
-
-```
-{
-  "loan": {
-    "id": 1
-  }
-}
-```
-
-Get Request para Loans:
-
-```curl --request GET http://localhost:3000/loans/1```
-
-Expected Response:
-```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
-```
+- Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
 
 Requisitos técnicos
 - Usar Ruby on Rails
@@ -63,3 +23,35 @@ Pontos extras para:
 Envio:
 
 Envie o seu código pronto através de um Pull Request para esse repositório
+
+---
+
+Documentação:
+https://documenter.getpostman.com/view/10691126/TzzDJaZ8
+
+Para rodar a API:
+- Atualizar as gems 
+```
+  bundle install
+```
+
+- Criar e atualizar o banco de dados
+```
+  rails db:create
+  rails db:migrate
+```
+
+- Rodar a aplicação rails
+```
+  rails s
+```
+
+- Rodar os testes RSpec
+```
+  make test
+```
+
+- Rodar a validação do lint (Rubocop)
+```
+  make lint ou make lint_autocorrect
+```
