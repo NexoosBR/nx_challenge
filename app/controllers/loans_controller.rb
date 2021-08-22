@@ -1,10 +1,19 @@
+require_relative '../helpers/calculate_pmt'
+
 class LoansController < ApplicationController
   def create
-    render json: { loan: { id: 1 } }
+    @loan = Loan.new(loan_params)
+
+    if @loan.save
+      render json: { Loan: { id: @loan[:id] } }, status: 201
+    else
+      raise 'Erro ao gerar PMT. Tente novamente.'
+    end
   end
 
-  def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+  private
+
+  def loan_params
+    params.require(:loan).permit(:financed_amount, :rate, :months)
   end
 end
