@@ -11,6 +11,11 @@ class LoansController < ApplicationController
     end
   end
 
+  def show
+    @loan = Loan.find(params[:id])
+    render json: { Loan: { id: @loan[:id], pmt: @loan[:pmt] } }, status: 200
+  end
+
   private
 
   def loan_params
