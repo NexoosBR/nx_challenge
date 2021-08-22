@@ -9,6 +9,6 @@ class Loan < ApplicationRecord
 
   def pmt
     i = rate / 100
-    value * ((i * ((1 + i) ** months)) / (((1 + i) ** months) - 1))
+    value * ((i * ((1 + i)**months)) / (((1 + i)**months) - 1))
   end
 end

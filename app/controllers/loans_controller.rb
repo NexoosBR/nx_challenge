@@ -11,7 +11,7 @@ class LoansController < ApplicationController
     render json: @client.loans.find(params[:id])
   rescue ActiveRecord::RecordNotFound => e
     render json: e.message, status: :not_found
-  end           
+  end
 
   def create
     render json: Loan.create!(create_loan_params)

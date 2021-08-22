@@ -11,7 +11,7 @@ class Client < ApplicationRecord
   validate :validate_cpf, if: -> { physical? }
   validate :validate_cnpj, if: -> { juridical? }
 
-  has_many :loans, inverse_of: false
+  has_many :loans, dependent: :restrict_with_error, inverse_of: false
 
   private
 

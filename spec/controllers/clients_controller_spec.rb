@@ -44,7 +44,7 @@ RSpec.describe ClientsController do
       end
     end
   end
-  
+
   describe "#{controler_name} create" do
     context 'com parametos corretos' do
       let(:params) do
@@ -58,10 +58,10 @@ RSpec.describe ClientsController do
           }
         }
       end
-  
+
       it 'deve criar corretamente' do
         post :create, params: params
-  
+
         expect(response.status).to be(200)
         expect(json_response).to include(
           'name' => params[:client][:name],

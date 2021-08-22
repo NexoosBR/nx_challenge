@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 controler_name = 'Loans'
 
@@ -66,10 +68,10 @@ RSpec.describe LoansController do
           }
         }
       end
-  
+
       it 'deve criar corretamente' do
         post :create, params: params
-  
+
         expect(response.status).to be(200)
         expect(json_response).to include(
           'value' => params[:loan][:value],
@@ -89,10 +91,10 @@ RSpec.describe LoansController do
           }
         }
       end
-  
+
       it 'não deve criar' do
         post :create, params: params
-  
+
         expect(response.status).to be(400)
       end
     end
@@ -107,10 +109,10 @@ RSpec.describe LoansController do
           }
         }
       end
-  
+
       it 'não deve criar' do
         post :create, params: params
-  
+
         expect(response.status).to be(404)
       end
     end
