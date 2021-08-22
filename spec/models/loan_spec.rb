@@ -21,5 +21,10 @@ RSpec.describe Loan, type: :model do
       loan = Loan.new(financed_amount: 1000, rate: 2, months: 0)
       expect(loan.save).to be(false)
     end
+
+    it 'do not save if loan amounts are equal to zero' do
+      loan = Loan.new(financed_amount: 0, rate: 0, months: 0)
+      expect(loan.save).to be(false)
+    end
   end
 end
