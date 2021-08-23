@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_184147) do
+ActiveRecord::Schema.define(version: 2021_08_22_222137) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nome"
@@ -21,4 +21,16 @@ ActiveRecord::Schema.define(version: 2021_08_22_184147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "loans", force: :cascade do |t|
+    t.decimal "pmt", precision: 10, scale: 2
+    t.decimal "pv", precision: 10, scale: 2
+    t.decimal "taxa_mensal", precision: 5, scale: 4
+    t.integer "meses"
+    t.integer "cliente_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cliente_id"], name: "index_loans_on_cliente_id"
+  end
+
+  add_foreign_key "loans", "clientes"
 end
