@@ -26,6 +26,11 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+
+    config.formatter = :documentation
+    config.failure_color = :red
+    config.tty = true
+    config.color = true
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
