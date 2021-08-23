@@ -1,0 +1,45 @@
+fileName: test_nexoos.yaml
+contents: "openapi: 3.0.0
+
+info:
+
+  \  title: Api Teste Técnico
+
+  \  description: |
+
+    \    Esta api foi desenvolvida em resposta ao teste
+
+    \    técnico proposto pela empresa Nexoos.
+
+  \  version: 1.0.0"
+
+__export_source: insomnia.desktop.app:v2021.4.1
+
+resources:
+  - _id: req_2081ad9004294e12909408f2888a32a5
+    url: http://localhost:3000/loans
+    description: "Inserção de dados para cálculo da PMT. Salva dados e cálculo no banco de dados. 
+    Retorna id da PMT"
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        "financed_amount": float,
+        "rate": float,
+        "months": integer
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    _type: request
+    
+  
+  - _id: req_92c3a2a1b4e040eb9c5d162f14a9ff14
+    url: http://localhost:3000/loans/id
+    description: "Retorna id da loan e seu respectivo valor salvo no banco de dados em formato json."
+    method: GET
+    headers:
+      - name: Content-Type
+        value: application/json
+    _type: request
