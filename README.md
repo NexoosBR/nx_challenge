@@ -1,65 +1,47 @@
-# README
-
-Nexoos Challenge
-
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
-
-Deve-se:
-
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
-
-Sobre a PMT:
-
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
-
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
+# Api Task manager
 
 
-Post Request para Loans:
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
+## 🚨 importante!
+É necessario docker-compose para rodar o projeto, caso queria rodar diretamente da maquina sera necessario ruby 2.7.2 e rails 6.1.3
+
+## 🛠 Setup
+Basta executar o seguinte comando:
+```sh
+docker-compose up -d
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
-```
+Que ira subir um container com o ruby e as gens instaladas, logo em seguida servidor puma ficara pronto.
 
-Expected Response:
+## 💻 Usage
+Primeiramente sera nescessario criar um cliente, relizando um post para /clientes podendo seguir o json abaixo 
 
-```
+```sh
 {
-  "loan": {
-    "id": 1
+	"nome": "Felipe Carlos Eduardo Fogaça",
+	"email": "felipecarloseduardofogaca-97@tetrapark.com", 
+	"cpf": "11705359760",
+	"telefone": 988774455
+}
+```
+Após isso poderemos realizar o post para /loans usnado o json de exemplo
+```sh
+{
+	"pv": 999,
+	"taxa_mensal": 0.028,
+	"meses": 12,
+	"cliente_id": 1
+}
+```
+E para ter acesso ao pmt basta execucar um get para o /loans e você cera o resultado.
+```sh
+{
+  "data": {
+    "id": "1",
+    "type": "loans",
+    "attributes": {
+      "pmt": "99.17"
+    }
   }
 }
 ```
-
-Get Request para Loans:
-
-```curl --request GET http://localhost:3000/loans/1```
-
-Expected Response:
-```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
-```
-
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
-
-Pontos extras para:
-
-- Documentação
-- Testes unitários e/ou de integração com Rspec
-
-Envio:
-
-Envie o seu código pronto através de um Pull Request para esse repositório
