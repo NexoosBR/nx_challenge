@@ -3,8 +3,8 @@ class LoansController < ApplicationController
     loan = Loan.new
     loan.value = params[:value]
     loan.tax = params[:tax]
-    # calculate pmt
-    loan.pmt = loan.value * loan.tax / 100
+    # calcular PMT
+    loan.pmt = loan.value * loan.tax * (1 + loan.tax) ** 12 / ((1 + loan.tax) ** 12 - 1)
     loan.save
     render json: { loan: { id: loan.id } }
   end
