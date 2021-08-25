@@ -17,8 +17,8 @@ describe 'Loans API' do
     it 'cannot find a loan' do
       get '/loans/1'
 
-      expect(response).to have_http_status(204)
-      expect(response.body).to be_empty
+      expect(response).to have_http_status(404)
+      expect(parsed_body[:message]).to eq('Empréstimo não encontrado')
     end
   end
 

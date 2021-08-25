@@ -1,16 +1,14 @@
 class LoansController < ApplicationController
   def create
     loan = Loan.new(loan_params)
-    if loan.save
-      render json: { loan: { id: loan.id } }, status: :created
-    else
-      render json: loan.errors, status: :unprocessable_entity
-    end
+    return render json: loan.errors, status: :unprocessable_entity unless loan.save
+
+    render json: { loan: { id: loan.id } }, status: :created
   end
 
   def show
     loan = Loan.find_by(id: params[:id])
-    return head :no_content if loan.nil?
+    return render json: { message: 'Empréstimo não encontrado' }, status: :not_found if loan.nil?
 
     render json: { loan: { id: loan.id, pmt: loan.pmt } }
   end
