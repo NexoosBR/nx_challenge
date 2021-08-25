@@ -1,0 +1,15 @@
+---
+  pt-BR:
+    loan:
+      one: 'Empréstimo'
+      other: 'Empréstimos'
+    activerecord:
+      models:
+        loan: 'Empréstimo'
+      attributes:
+        loan:
+          value: 'Valor'
+          rate: 'Taxa'
+          pmt: 'PMT'
+    messages:
+      not_found: 'Empréstimo não encontrado'

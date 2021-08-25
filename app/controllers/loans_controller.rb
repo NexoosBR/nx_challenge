@@ -8,7 +8,7 @@ class LoansController < ApplicationController
 
   def show
     loan = Loan.find_by(id: params[:id])
-    return render json: { message: 'Empréstimo não encontrado' }, status: :not_found if loan.nil?
+    return render json: { message: I18n.t('messages.not_found') }, status: :not_found if loan.nil?
 
     render json: { loan: { id: loan.id, pmt: loan.pmt } }
   end

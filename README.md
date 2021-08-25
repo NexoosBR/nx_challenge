@@ -1,65 +1,118 @@
-# README
+# Nexoos Challenge
+***
+## Sobre o projeto
 
-Nexoos Challenge
+O desafio consiste em completar o desenvolvimento de uma API capaz de gerir empréstimos, salvando informações necessárias do cliente para realização do cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+## Requisitos Necessários:
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+* Ruby 2.7.2
+* Rails 6.1.3.2
+* PostgreSQL 13.4
 
-Deve-se:
+### Gems adicionais
+<ul>
+  <li>Testes</li>
+  <ul>
+    <li>Rspec</li>
+    <li>Factory Bot</li>
+    <li>Simplecov</li>
+  </ul>
+</ul>
+  <li>Outras gems</li>
+  <ul>
+    <li>Rubocop</li>
+  </ul>
+</ul>
 
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
+## Funcionalidades
 
-Sobre a PMT:
+* Realização do cálculo do valor da parcela (PMT)
+* Leitura de um PMT cadastrado previamente
 
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
+## Para executar o projeto:
+* Clone em sua máquina
 
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
-
-
-Post Request para Loans:
-
+```shell
+git clone https://github.com/weslley6216/nx_challenge.git
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+
+### Instale as dependências
+```shell
+cd nx_challenge
+bin/setup
 ```
 
-Expected Response:
+### Configure o Banco de Dados
+Realize a criação de dados preexistentes no banco de dados com o comando
+```shell
+rails db:seed
+```
+## API
 
+### Consultar uma simulação de empréstimo
+#### get '/loans/:id'
+* Retorna uma simulação de empréstimo ao receber um id válido
+```
+curl --request GET http://localhost:3000/loans/1 -H 'Content-Type: application/json'
+```
+#### Possíveis respostas
+* HTTP Status: 200 - Simulação de empréstimo encontrado com sucesso
+```
+{"loan":{"id":1,"pmt":"349.88"}}
+```
+* HTTP Status: 404 - Código da simulação de empréstimo não existente
 ```
 {
-  "loan": {
-    "id": 1
-  }
+  "id": "238",
+  "message":"Empréstimo não encontrado"
 }
 ```
+### Criação de Empréstimo
+#### post '/loans/'
+* Retorna um empréstimo após receber os seguintes parametros:
+```
+curl --request POST http://localhost:3000/loans -H 'Content-Type: application/json' -d '{"value":"3700", "rate":"2"}' 
+```
+Exemplo:
+#### Possíveis respostas
+* HTTP Status: 201 - Empréstimo criado com sucesso
+```
+{"loan":{"id":3}}
+```
 
-Get Request para Loans:
-
-```curl --request GET http://localhost:3000/loans/1```
-
-Expected Response:
+* HTTP Status: 422 - Parâmetros faltando ou em branco
 ```
 {
-  "loan": {
-    "id": 1, "pmt": 308
-  }
+  "value":[
+            "não pode ficar em branco"
+          ],
+
+   "rate":[
+            "não pode ficar em branco"
+          ]
 }
 ```
+* HTTP Status: 422 - Parâmetros não sejam números
+```
+{
+  "value":[
+            "não é um número"
+          ],
 
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
+   "rate":[
+            "não é um número"
+          ]
+}
+```
+* HTTP Status: 422 - Parâmetros que não sejam números maiores de zero
+```
+{
+  "value":[
+            "deve ser maior que 0"
+          ],
 
-Pontos extras para:
-
-- Documentação
-- Testes unitários e/ou de integração com Rspec
-
-Envio:
-
-Envie o seu código pronto através de um Pull Request para esse repositório
+   "rate":[
+            "deve ser maior que 0"
+          ]
+}
+```
