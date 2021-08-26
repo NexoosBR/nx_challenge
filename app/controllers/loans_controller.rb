@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LoansController < ApplicationController
   def create
     render json: {loan: {id: 1}}
