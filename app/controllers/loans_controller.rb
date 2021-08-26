@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class LoansController < ApplicationController
   def create
-    render json: { loan: { id: 1 } }
+    render json: {loan: {id: 1}}
   end
 
   def show
     pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    render json: {loan: {id: 1, pmt: pmt}}
   end
 end
