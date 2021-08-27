@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class LoansController < ApplicationController
-  def create
+class Api::V1::LoansController < ApplicationController
+  def make_loan
     render json: {loan: {id: 1}}
   end
 
-  def show
+  def payments
     pmt =  3_700 / 12
     render json: {loan: {id: 1, pmt: pmt}}
   end
