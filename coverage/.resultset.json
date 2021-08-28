@@ -41,6 +41,7 @@
           1,
           null,
           1,
+          1,
           null,
           null,
           null,
@@ -250,10 +251,10 @@
           null,
           1,
           1,
-          8,
-          8,
-          8,
-          8,
+          6,
+          6,
+          6,
+          6,
           null,
           null
         ]
@@ -348,11 +349,9 @@
           1,
           null,
           1,
-          8,
+          6,
           null,
           1,
-          2,
-          2,
           2,
           2,
           2,
@@ -369,7 +368,6 @@
           1,
           1,
           1,
-          1,
           null
         ]
       },
@@ -381,8 +379,55 @@
           1,
           null
         ]
+      },
+      "/home/vapordev/Documentos/nexoos/nx_challenge/spec/repositories/loan_repository_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/vapordev/Documentos/nexoos/nx_challenge/app/repositories/loan_repository.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1630113331
+    "timestamp": 1630119205
   }
 }
