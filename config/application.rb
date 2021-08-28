@@ -25,6 +25,7 @@ module NexoosChallenge
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.autoload_paths << Rails.root.join("app/repositories")
 
     # Configuration for the application, engines, and railties goes here.
     #
