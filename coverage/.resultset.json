@@ -235,7 +235,7 @@
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           null,
@@ -246,12 +246,14 @@
       },
       "/home/vapordev/Documentos/nexoos/nx_challenge/spec/factories/loans.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
+          8,
+          8,
+          8,
+          8,
           null,
           null
         ]
@@ -262,8 +264,11 @@
           null,
           1,
           null,
-          null,
           1,
+          1,
+          1,
+          1,
+          null,
           null,
           null
         ]
@@ -274,13 +279,13 @@
           null,
           1,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null,
           1,
-          0,
-          0,
+          11,
+          11,
           null,
           null,
           null
@@ -308,8 +313,59 @@
           null
         ]
       },
+      "/home/vapordev/Documentos/nexoos/nx_challenge/app/controllers/api/v1/loans_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/vapordev/Documentos/nexoos/nx_challenge/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/home/vapordev/Documentos/nexoos/nx_challenge/spec/models/loan_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          8,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
       "/home/vapordev/Documentos/nexoos/nx_challenge/app/models/loan.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -327,6 +383,6 @@
         ]
       }
     },
-    "timestamp": 1630026994
+    "timestamp": 1630113331
   }
 }
