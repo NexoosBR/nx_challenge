@@ -1,7 +1,7 @@
 # Nexoos Challenge
 
 Desafio de desenvolvimento de software para a Nexoos.
-O desafio consiste na criação deum sistema de gerenciamento de empréstimos. Usando o calculo de **pmt** para retornar o valor das parcelas.
+O desafio consiste na criação de um sistema de gerenciamento de empréstimos. Usando o calculo de **pmt** para retornar o valor das parcelas.
 
 ## Inicinado
 
@@ -84,7 +84,7 @@ Para ver os resultados de qualidade de código como code smells, testes, lint, d
 rubycritic
 ```
 
-## Creditos
+## Créditos
 
 Wagner Abrantes de Oliveira
 [linkedin](https://www.linkedin.com/in/vapordev/)
