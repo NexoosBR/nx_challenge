@@ -34,6 +34,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+  gem "rubycritic", require: false
   gem "shoulda-matchers", "~> 5.0"
 end
 

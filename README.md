@@ -1,65 +1,92 @@
-# README
+# Nexoos Challenge
 
-Nexoos Challenge
+Desafio de desenvolvimento de software para a Nexoos.
+O desafio consiste na criação deum sistema de gerenciamento de empréstimos. Usando o calculo de **pmt** para retornar o valor das parcelas.
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+## Inicinado
 
-Deve-se:
+Clone esse repositório
 
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
-
-Sobre a PMT:
-
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
-
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
-
-
-Post Request para Loans:
-
+```bash
+git clone https://github.com/wagnerdevocelot/nx_challenge.git
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+Na raiz do repositório, rode todos esses comandos para instalar o ambiente de desenvolvimento e subir o servidor na porta 3000.
+
+```bash
+bundle install; rails db:create; rails db:migrate; rails s
 ```
 
-Expected Response:
+## Referencias da API
 
+#### Loan (endpoint)
+
+[![API Status](https://img.shields.io/badge/POST-loans-blue.svg)]()
+
+Aqui você pode criar um empréstimo.
+
+```bash
+/api/v1/loans
 ```
+payload:
+
+```json
+{
+  "present_value": 100,
+  "tax": 2
+}
+```
+
+Nome   | Descrição | Tipo
+--------- | ------  | --------
+**present_value** | Valor do empréstimo | decimal
+**tax** | Taxa de juros | decimal
+
+
+
+[![API Status](https://img.shields.io/badge/GET-loans-blue.svg)]()
+
+```bash
+/api/v1/loans/{id}
+```
+raw_data:
+
+```jSON
 {
   "loan": {
-    "id": 1
+    "id": 1,
+    "pmt": "9.46"
   }
 }
 ```
 
-Get Request para Loans:
+Nome   | Descrição | Tipo
+--------- | ------  | --------
+**id** | identificador do empréstimo | primary key
+**pmt** | valor da parcela | decimal
 
-```curl --request GET http://localhost:3000/loans/1```
+## Testes e qualidade do código
 
-Expected Response:
+Para testar o código, rode o comando abaixo.
+
+```bash
+rspec
 ```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
+
+Para ver os resultados de cobertura do código, rode o comando abaixo.
+
+```bash
+open coverage/index.html
 ```
 
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
+Para ver os resultados de qualidade de código como code smells, testes, lint, duplicidade e complexidade, rode o comando abaixo.
 
-Pontos extras para:
+```bash
+rubycritic
+```
 
-- Documentação
-- Testes unitários e/ou de integração com Rspec
+## Creditos
 
-Envio:
+Wagner Abrantes de Oliveira
+[linkedin](https://www.linkedin.com/in/vapordev/)
+[wagner1337.py@gmail.com](mailto:wagner1337.py@gmail.com)
 
-Envie o seu código pronto através de um Pull Request para esse repositório
