@@ -3,7 +3,7 @@
 #### Sobre o Cálculo PMT
 Também conhecido como sistema francês, o sistema Price é utilizada para amortizar uma dívida com parcelas constantes. A fórmula geral da parcela no sistema Price é dada pela fórmula:
 
-![fórmula PMT]( https://www.renatrader.com.br/images/aprender/matematica-financeira/image034.gif)
+![fórmula PMT](https://github.com/jhonattasantos/nx_challenge/blob/master/formula.gif)
 
 Onde:
 
