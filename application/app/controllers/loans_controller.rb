@@ -13,4 +13,11 @@ class LoansController < ApplicationController
     pmt =  3_700 / 12
     render json: { loan: { id: 1, pmt: pmt } }
   end
+
+  private
+
+  def loan_params
+    params.require(:loan).permit(:value, :rate, :installments)
+  end
+  
 end
