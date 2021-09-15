@@ -1,6 +1,12 @@
 class LoansController < ApplicationController
+
   def create
-    render json: { loan: { id: 1 } }
+    loan = Loan.new(loan_params)
+    if loan.save
+      render json: { loan: { id: loan.id } }, status: :created
+    else
+      render json: { errors: loan.errors }, status: :unprocessable_entity
+    end
   end
 
   def show
