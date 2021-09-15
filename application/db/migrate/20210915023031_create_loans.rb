@@ -3,8 +3,7 @@ class CreateLoans < ActiveRecord::Migration[6.1]
     create_table :loans do |t|
       t.decimal :value
       t.decimal :rate
-      t.string :installments
-      t.string :integer
+      t.integer :installments
 
       t.timestamps
     end
