@@ -10,8 +10,12 @@ class LoansController < ApplicationController
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    loan = Loan.find_by_id params[:id]
+    if loan
+      render json: { loan: { pmt: loan.pmt }}, status: :ok
+    else
+      render json: { error: "loan not found" }, status: :not_found
+    end
   end
 
   private
@@ -19,5 +23,5 @@ class LoansController < ApplicationController
   def loan_params
     params.require(:loan).permit(:value, :rate, :installments)
   end
-  
+
 end
