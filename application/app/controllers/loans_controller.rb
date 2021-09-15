@@ -12,7 +12,7 @@ class LoansController < ApplicationController
   def show
     loan = Loan.find_by_id params[:id]
     if loan
-      render json: { loan: { pmt: loan.pmt }}, status: :ok
+      render json: { loan: { id: loan.id ,pmt: loan.pmt }}, status: :ok
     else
       render json: { error: "loan not found" }, status: :not_found
     end
