@@ -25,3 +25,21 @@ Para executar o desafio em seu computador você precisa do **Git** e **Docker**
  #### Executando tests
  `docker-compose run web rspec`
  Logo apos a execução dos testes vai ser gerado o diretorio `application/coverage` e um arquivo index.html para analise da cobertura dos teste
+
+ #### HTTP Request
+
+POST
+```
+curl -X POST \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-d '{"value": "30000","rate":"0.02","installments": "15"}' \
+'http://localhost:4000/loans'
+
+```
+
+GET
+```
+curl -X GET \
+'http://localhost:4000/loans/1'
+```
