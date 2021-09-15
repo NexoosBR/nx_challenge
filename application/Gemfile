@@ -19,6 +19,12 @@ gem 'puma', '~> 5.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
+gem 'simplecov', require: false, group: :test
+
+#Brings back `assigns` and `assert_template` to your Rails tests
+gem 'rails-controller-testing'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -29,6 +35,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
+  # Factory Bot hearts Rails
+  gem 'factory_bot_rails'
 end
 
 group :development do

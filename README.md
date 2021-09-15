@@ -1,65 +1,45 @@
-# README
 
-Nexoos Challenge
+# Nexoos Challenge
+#### Sobre o Cálculo PMT
+Também conhecido como sistema francês, o sistema Price é utilizada para amortizar uma dívida com parcelas constantes. A fórmula geral da parcela no sistema Price é dada pela fórmula:
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+![fórmula PMT](https://github.com/jhonattasantos/nx_challenge/blob/master/formula.gif)
 
-Deve-se:
+Onde:
 
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
+PMT = Valor da parcela  
+VP = Valor presente da dívida  
+i = taxa de juros  
+n = número de períodos
 
-Sobre a PMT:
+ #### Configuração do Ambiente
+Para executar o desafio em seu computador você precisa do **Git** e **Docker**
 
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
+1.  Escolha um diretorio em seu computador.
+2.  Clone o projeto no seu computador
+	 `git clone https://github.com/jhonattasantos/nx_challenge.git`
+3.  Entre no diretorio  `cd nx_challenge`
+4.  Suba o container:  `docker-compose up --build`
+5.  Criação das Migrações:  `docker-compose run web rails db:migrate`
 
-Cálculo da PMT:
+ #### Executando tests
+ `docker-compose run web rspec`
+ Logo apos a execução dos testes vai ser gerado o diretorio `application/coverage` e um arquivo index.html para analise da cobertura dos teste
 
-http://ghiorzi.org/amortiza.htm
+ #### HTTP Request
 
-
-Post Request para Loans:
+POST
+```
+curl -X POST \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-d '{"value": "30000","rate":"0.02","installments": "15"}' \
+'http://localhost:4000/loans'
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+
+GET
 ```
-
-Expected Response:
-
+curl -X GET \
+'http://localhost:4000/loans/1'
 ```
-{
-  "loan": {
-    "id": 1
-  }
-}
-```
-
-Get Request para Loans:
-
-```curl --request GET http://localhost:3000/loans/1```
-
-Expected Response:
-```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
-```
-
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
-
-Pontos extras para:
-
-- Documentação
-- Testes unitários e/ou de integração com Rspec
-
-Envio:
-
-Envie o seu código pronto através de um Pull Request para esse repositório
