@@ -1,10 +1,28 @@
 class LoansController < ApplicationController
+  before_action :set_loan_id, only: %i[ show ]
   def create
-    render json: { loan: { id: 1 } }
+    @loan = Loan.new(loan_params)
+    if @loan.save
+      render json: { loan: { id: @loan.id } }, status: :created
+    else
+      return render json: @loan.errors
+    end    
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    if @loan.nil? == false
+      render json: { loan: { id: @loan.id, pmt: @loan.pmt } }
+    else
+      return render json: { message: ('not found') }, status: :not_found
+    end    
+  end
+
+  private
+  def set_loan_id
+    @loan = Loan.find_by(id: params[:id])
+  end
+
+  def loan_params
+    params.permit(:value, :taxa, :pmt)
   end
 end
