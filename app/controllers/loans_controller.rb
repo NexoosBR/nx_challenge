@@ -5,7 +5,7 @@ class LoansController < ApplicationController
     if @loan.save
       render json: { loan: { id: @loan.id } }, status: :created
     else
-      return render json: @loan.errors, status: :unprocessable_entity
+      return render json: @loan.errors
     end    
   end
 
@@ -23,6 +23,6 @@ class LoansController < ApplicationController
   end
 
   def loan_params
-    params.require(:loan).permit(:value, :taxa, :pmt)
+    params.permit(:value, :taxa, :pmt)
   end
 end
