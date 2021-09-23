@@ -7,7 +7,8 @@ describe 'Loans' do
   end
   context 'GET /loans/:id' do
     it 'should return a loan' do
-      get show_loan_path(@loan)
+      get show_loan_path(@loan.id)
+      expect(response.content_type).to include('application/json')
       expect(response).to have_http_status(200)
     end
 
@@ -21,7 +22,7 @@ describe 'Loans' do
   context 'POST /loans' do
     it 'should create a loan' do
       post create_loan_path, params: { loan: { value: 3700, taxa: 2 } }
-
+      expect(response.content_type).to include('application/json')
       expect(response).to have_http_status(201)
     end
 
