@@ -1,6 +1,7 @@
 class LoansController < ApplicationController
   def create
-    render json: { loan: { id: 1 } }
+    pmt = PMT::Loans.new(10045.0, 1.2, 12)
+    render json: pmt.calculate, status: :ok
   end
 
   def show
