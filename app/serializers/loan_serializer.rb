@@ -4,7 +4,7 @@ class LoanSerializer < ActiveModel::Serializer
   def loan
     {
       'id': object.id,
-      'pmt': pmt
+      'pmt': sprintf("%.2f", pmt)
     }
   end
 
