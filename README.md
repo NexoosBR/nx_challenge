@@ -22,9 +22,7 @@ http://ghiorzi.org/amortiza.htm
 Post Request para Loans:
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+curl -X POST -H "Content-Type: application/json" -d '{"loan": { "value": 32045.00, "fee": 0.8, "months": 22 }}' http://localhost:3000/loans
 ```
 
 Expected Response:
@@ -45,7 +43,7 @@ Expected Response:
 ```
 {
   "loan": {
-    "id": 1, "pmt": 308
+    "id": 1, "pmt": 1594.33
   }
 }
 ```
