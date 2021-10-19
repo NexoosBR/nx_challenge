@@ -1,11 +1,27 @@
 class LoansController < ApplicationController
+  before_action :set_loan, only: [:show]
+  
   def create
-    pmt = PMT::Loans.new(10045.0, 1.2, 12)
-    render json: pmt.calculate, status: :ok
+    @loan = Loan.new(loan_params)
+
+    if @loan.save
+      render json: {'loan': {'id': @loan.id}}, status: :ok
+    else
+      render json: { "message": "Please check your params."}, status: :forbidden
+    end
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    render json: @loan
+  end
+
+  private
+
+  def loan_params
+    params.require(:loan).permit(:value, :fee, :months)
+  end
+
+  def set_loan
+    @loan = Loan.find(params[:id])
   end
 end
