@@ -3,6 +3,7 @@ class Loan < ApplicationRecord
 
   private
 
+  # Callback para definir a pmt
   def set_pmt
     value = self.value
     fee = self.fee

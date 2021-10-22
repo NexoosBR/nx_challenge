@@ -8,10 +8,12 @@ module Pmt
       @months = attributes[:months]
     end
 
+    # Método para chamar o objeto em outras classes
     def self.call(value, fee, months)
       new(value: value, fee: fee, months: months).calculate
     end
 
+    # Método que calcula o valor de cada parcela
     def calculate
       pv = @value
       i = ('%.2f' % (@fee.to_d / 100)).to_d
