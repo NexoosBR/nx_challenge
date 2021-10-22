@@ -11,7 +11,7 @@ class LoansController < ApplicationController
 
   def show
     @loan = Loan.find(params[:id])
-    render json: @loan
+    render json: @loan, adapter: :json
   end
 
   private
