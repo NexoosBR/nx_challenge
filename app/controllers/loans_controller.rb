@@ -1,10 +1,22 @@
 class LoansController < ApplicationController
   def create
-    render json: { loan: { id: 1 } }
+    # byebug
+    @loan = Loan.new(loan_params)
+    if @loan.save
+      render json: { loan: { id: @loan.id } }
+    else
+      render json: { error: "Algo deu errado. Tente novamente."}, status: :unprocessable_entity
+    end
   end
 
   def show
-    pmt =  3_700 / 12
-    render json: { loan: { id: 1, pmt: pmt } }
+    @loan = Loan.find(params[:id])
+    render json: @loan, adapter: :json
+  end
+
+  private
+
+  def loan_params
+    params.permit(:value, :fee, :months)
   end
 end
