@@ -1,65 +1,37 @@
 # README
 
-Nexoos Challenge
+## Banco de Dados
 
-Seu desafio será completar o desenvolvimento dessa API capaz de gerir empréstimos, salvando informações necessárias do cliente para podermos realizar o cálculo do valor da parcela (PMT), além de haver a possibilidade de leitura desses dados pelo cliente.
+Foi criado o modelo Loan, que tem 4 campos: value (valor total), fee (taxa de juros ao ano), months (número de meses) e pmt (parcela mensal).
 
-Deve-se:
+Todos, com exceção do número de meses, foram criados como decimals, para evitar as imprecisões de cálculos feitos com floats.
 
-- Modelar o banco de dados parar ter os dados necessários do cálculo da PMT
-- Completar as rotas `POST /loans` e `GET /loans/ID`, alterando a API para escrever e retornar dados do banco de dados.
-  - Na escrita, deve-se calcular o valor da parcela (PMT) e salvar no banco de dados.
+Para cálculo da PMT, foi criado um objeto de serviço, que é acionado pelo modelo antes de qualquer objeto ser salvo no banco de dados, através de um callback.
 
-Sobre a PMT:
+## Endpoints
 
-https://fia.com.br/blog/matematica-financeira/#:~:text=PMT%20s%C3%A3o%20pagamentos%20de%20mesmo,ou%20empresarial)%20de%20forma%20recorrente.&text=Por%20isso%2C%20tamb%C3%A9m%20s%C3%A3o%20tratados,fixa%20de%20empr%C3%A9stimo%20ou%20financiamento
+A API possui dois endpoints: 'GET /loans/:id' e 'POST /loans'
 
-Cálculo da PMT:
-
-http://ghiorzi.org/amortiza.htm
-
-
-Post Request para Loans:
+GET /loans/:id
 
 ```
-curl --request POST http://localhost:3000/loans -d \
- value=1000& \
- taxa=0.2
+curl --request GET http://localhost:3000/loans/<INSERIR ID>
 ```
 
-Expected Response:
+POST /loans
 
 ```
-{
-  "loan": {
-    "id": 1
-  }
-}
+curl -X POST -d 'value=2000&months=12&fee=16' http://localhost:3000/loans
 ```
 
-Get Request para Loans:
+## Testes
 
-```curl --request GET http://localhost:3000/loans/1```
+Foram criados testes para o modelo Loan, para verificar se as validações simples estão funcionando e se a PMT está sendo calculada corretamente.
 
-Expected Response:
+Os testes de controller foram substituídos por testes de requests, conforme é recomendado pela documentação do Rspec.
+
+Para rodar os testes, basta rodar no terminal:
+
 ```
-{
-  "loan": {
-    "id": 1, "pmt": 308
-  }
-}
+rspec
 ```
-
-Requisitos técnicos
-- Usar Ruby on Rails
-- É permitido o uso de frameworks e gems
-- Deve ser usado GIT para versionamento
-
-Pontos extras para:
-
-- Documentação
-- Testes unitários e/ou de integração com Rspec
-
-Envio:
-
-Envie o seu código pronto através de um Pull Request para esse repositório
