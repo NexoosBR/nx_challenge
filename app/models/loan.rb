@@ -1,6 +1,9 @@
 class Loan < ApplicationRecord
   before_save :set_pmt
 
+  validates :value, :fee, :months, presence: true
+  validates :value, :fee, :months, numericality: true
+
   private
 
   # Callback para definir a pmt
