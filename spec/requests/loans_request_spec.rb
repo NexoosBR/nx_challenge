@@ -48,14 +48,5 @@ RSpec.describe Loan, type: :request do
         expect(loan_hash).to have_key('pmt')
       end
     end
-    
-    # context "com parâmetros inválidos" do
-    #   invalid_params = { value: 'string', months: 12, fee: 10 }
-    #   it 'deve retornar status 500' do
-    #     post loans_path, params: invalid_params
-
-    #     expect(response).to have_http_status(:unprocessable_entity)
-    #   end
-    # end
   end
 end
